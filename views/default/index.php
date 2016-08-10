@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html><head></head><body>
+
 <h1><?php echo $docs["name"];?></h1>
 <hr/>
 <div id="divMenu" />
@@ -69,4 +68,3 @@
 	}
 
 </script>
-</body>

@@ -24,7 +24,7 @@ class DefaultController extends ApiController {
      */
 	public function actionIndex() 
 	{
-    //$this->layout = "//layouts/mainSearch";
+    $this->layout = "//layouts/mainApi";
     $docsJSON = str_replace("'", "&quot;", file_get_contents("../../modules/api/data/docs.json", FILE_USE_INCLUDE_PATH));
     
     $docs = json_decode($docsJSON,true);

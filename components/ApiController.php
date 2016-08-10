@@ -13,65 +13,11 @@ class ApiController extends Controller
   public static $moduleKey = "api";
   public $keywords = "connecter, réseau, sociétal, citoyen, société, regrouper, commune, communecter, social";
   public $description = "Communecter : Connecter à sa commune, réseau sociétal, le citoyen au centre de la société.";
-  public $projectName = "";
-  public $projectImage = "/images/CTK.png";
-  public $projectImageL = "/images/logo.png";
-  public $footerImages = array(
-      array("img"=>"/images/logoORD.PNG","url"=>"http://openrd.io"),
-      array("img"=>"/images/logo_region_reunion.png","url"=>"http://www.regionreunion.com"),
-      array("img"=>"/images/technopole.jpg","url"=>"http://technopole-reunion.com"),
-      array("img"=>"/images/Logo_Licence_Ouverte_noir_avec_texte.gif","url"=>"https://data.gouv.fr"),
-      array("img"=>'/images/blog-github.png',"url"=>"https://github.com/orgs/pixelhumain/dashboard"),
-      array("img"=>'/images/opensource.gif',"url"=>"http://opensource.org/"));
-  const theme = "ph-dori";
-  public $person = null;
-  public $themeStyle = "theme-style11";//3,4,5,7,9
+  
   public $notifications = array();
   //TODO - Faire le tri des liens
   //TODO - Les children ne s'affichent pas dans le menu
-  public $toolbarMenuAdd = array(
-     array('label' => "My Network", "key"=>"myNetwork",
-            "children"=> array(
-              //"myaccount" => array( "label"=>"My Account","key"=>"newContributor", "class"=>"new-contributor", "href" => "#newContributor", "iconStack"=> array("fa fa-user fa-stack-1x fa-lg","fa fa-pencil fa-stack-1x stack-right-bottom text-danger")),
-              "showContributors" => array( "label"=>"Find People","class"=>"show-contributor","key"=>"showContributors", "href" => "#showContributors", "iconStack"=> array("fa fa-user fa-stack-1x fa-lg","fa fa-search fa-stack-1x stack-right-bottom text-danger")),
-              "newInvite" => array( "label"=>"Invite Someone","key"=>"invitePerson", "class"=>"ajaxSV", "onclick" => "", "iconStack"=> array("fa fa-user fa-stack-1x fa-lg","fa fa-plus fa-stack-1x stack-right-bottom text-danger")),
-            )
-          ),
-    array('label' => "Organisation", "key"=>"organization",
-            "children"=> array(
-              "addOrganization" => array( "label"=>"Add an Organisation","key"=>"addOrganization", "class"=>"ajaxSV", "onclick"=>"", "iconStack"=> array("fa fa-group fa-stack-1x fa-lg","fa fa-plus fa-stack-1x stack-right-bottom text-danger"))
-            )
-          ),
-    array('label' => "News", "key"=>"note",
-                "children"=> array(
-                  "createNews"  => array( "label"=>"Create news", "key"=>"new-news",   "class"=>"new-news", "iconStack"=> array("fa fa-bullhorn fa-stack-1x fa-lg","fa fa-plus fa-stack-1x stack-right-bottom text-danger")),
-                  //"newsStream"  => array( "label"=>"News stream", "key"=>"newsstream", "class"=>"ajaxSV", "onclick"=>"openSubView('News stream', '/communecter/news/newsstream', null)", "iconStack"=> array("fa fa-list fa-stack-1x fa-lg","fa fa-search fa-stack-1x stack-right-bottom text-danger")),
-                  //"newNote"   => array( "label"=>"Add new note",  "class"=>"new-note",    "key"=>"newNote",  "href" => "#newNote",  "iconStack"=> array("fa fa-list fa-stack-1x fa-lg","fa fa-plus fa-stack-1x stack-right-bottom text-danger")),
-                 // "readNote"  => array( "label"=>"Read All notes","class"=>"read-all-notes","key"=>"readNote", "href" => "#readNote", "iconStack"=> array("fa fa-list fa-stack-1x fa-lg","fa fa-share fa-stack-1x stack-right-bottom text-danger")),
-                )
-          ),
-     array('label' => "Event", "key"=>"event",
-                "children"=> array(
-                  "newEvent" => array( "label"=>"Add new event","key"=>"newEvent",  "class"=>"init-event", "href" => "#newEvent", "iconStack"=> array("fa fa-calendar-o fa-stack-1x fa-lg","fa fa-plus fa-stack-1x stack-right-bottom text-danger")),
-                  "showCalendar" => array( "label"=>"Show calendar","class"=>"show-calendar","key"=>"showCalendar", "href" => "/ph/communecter/event/calendarview", "iconStack"=> array("fa fa-calendar-o fa-stack-1x fa-lg","fa fa-share fa-stack-1x stack-right-bottom text-danger")),
-                )
-          ),
-     array('label' => "Projects", "key"=>"projects",
-                "children"=> array(
-                  "newProject" => array( "label"=>"Add new Project","key"=>"newProject", "class"=>"new-project", "href" => "#newProject", "iconStack"=> array("fa fa-cogs fa-stack-1x fa-lg","fa fa-plus fa-stack-1x stack-right-bottom text-danger")),
-                  )
-          ),
-     array('label' => "Rooms", "key"=>"rooms",
-                "children"=> array(
-                  "newRoom" => array( "label"=>"Add new Room","key"=>"newRoom", "class"=>"ajaxSV", "onclick"=>"", "iconStack"=> array("fa fa-comments fa-stack-1x fa-lg","fa fa-plus fa-stack-1x stack-right-bottom text-danger")),
-                  )
-          )
-  );
-  public $subviews = array(
-    //"news.newsSV",
-    //"person.invite",
-    //"event.addAttendeesSV"
-  );
+ 
   public $pages = array(
 
     "default"=> array(
@@ -88,53 +34,14 @@ class ApiController extends Controller
       //echo "<script type='text/javascript'> userId = '".Yii::app()->session['userId']."'; var blackfly = 'sosos';</script>";
     
     //managed public and private sections through a url manager
-    if( Yii::app()->controller->id == "admin" && !Yii::app()->session[ "userIsAdmin" ] )
-      throw new CHttpException(403,Yii::t('error','Unauthorized Access.'));
     $page = $this->pages[Yii::app()->controller->id][Yii::app()->controller->action->id];
-    $pagesWithoutLogin = array(
-                            //Login Page
-                            "person/login", 
-                            "person/register", 
-                            "person/authenticate", 
-                            "person/activate", 
-                            "person/sendemail",
-                            "person/checkusername",
-                            //Document Resizer
-                            "document/resized");
     
-    $prepareData = true;
-    //if (true)//(isset($_SERVER["HTTP_ORIGIN"]) )//&& $_SERVER["REMOTE_ADDR"] == "52.30.32.155" ) //this is an outside call 
-    //{ 
-      //$host = "meteor.communecter.org";
-      //if (strpos("http://".$host, $_SERVER["HTTP_ORIGIN"]) >= 0 || strpos("https://".$host, $_SERVER["HTTP_ORIGIN"]) >= 0 ){
     if( isset( $_POST["X-Auth-Token"]) && Authorisation::isMeteorConnected( $_POST["X-Auth-Token"] ) ){
       $prepareData = false;
     }
-      //} 
-    //}
-    else if( (!isset( $page["public"] ) ) && (!isset( $page["json"] ))
-      && !in_array(Yii::app()->controller->id."/".Yii::app()->controller->action->id, $pagesWithoutLogin)
-      && !Yii::app()->session[ "userId" ] )
-    {
-        Yii::app()->session["requestedUrl"] = Yii::app()->request->url;
-        //if( Yii::app()->request->isAjaxRequest)
-          //echo "<script type='text/javascript'> checkIsLoggued('".Yii::app()->session['userId']."'); </script>";
-         
-    }
-    if( isset( $_GET["backUrl"] ) )
-      Yii::app()->session["requestedUrl"] = $_GET["backUrl"];
-    /*if( !isset(Yii::app()->session['logguedIntoApp']) || Yii::app()->session['logguedIntoApp'] != $this->module->id)
-      $this->redirect(Yii::app()->createUrl("/".$this->module->id."/person/logout"));*/
-    if( $prepareData )
-    {
-      $this->sidebar1 = array_merge( Menu::menuItems(), $this->sidebar1 );
-      $this->person = Person::getPersonMap(Yii::app() ->session["userId"]);
-      $this->title = (isset($page["title"])) ? $page["title"] : $this->title;
-      $this->subTitle = (isset($page["subTitle"])) ? $page["subTitle"] : $this->subTitle;
-      $this->pageTitle = (isset($page["pageTitle"])) ? $page["pageTitle"] : $this->pageTitle;
-      $this->notifications = ActivityStream::getNotifications( array( "notify.id" => Yii::app()->session["userId"] ) );
-      CornerDev::addWorkLog("communecter","you@dev.com",Yii::app()->controller->id,Yii::app()->controller->action->id);
-    }
+      
+    CornerDev::addWorkLog("communecter","you@dev.com",Yii::app()->controller->id,Yii::app()->controller->action->id);
+    
   }
   protected function beforeAction($action){
     if( $_SERVER['SERVER_NAME'] == "127.0.0.1" || $_SERVER['SERVER_NAME'] == "localhost" ){
