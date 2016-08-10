@@ -1,0 +1,1418 @@
+{
+	"id": "93b3bad7-3907-8879-9089-54f288f164ad",
+	"name": "Documentation",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "8b2a0473-1fda-8de3-79c6-080a55f02bf7",
+			"name": "Autres",
+			"description": "",
+			"order": [
+				"e79af0a0-4e21-d543-52be-e19f8e019704",
+				"9df11bcc-d726-9bdb-f07a-331748b3fab4",
+				"ea7ea3c7-f5bc-325e-3fd7-dcf520b655f6",
+				"836e7368-5b94-08de-e2e4-99f6544c6ad9",
+				"c9b9f55c-251c-5042-7f1b-2c97a1e62f94",
+				"c7c34f51-d5fe-5e2f-35f3-feeb4dcf88a5",
+				"b123f082-2e36-10fc-ee7d-319dd983e635",
+				"ab7597ee-879b-8d76-d0aa-23fb231626b3",
+				"53518e81-ba3d-9d7e-117f-05b755af886f",
+				"7640138e-1c4e-d33e-e096-4c177dbd600c",
+				"c762feb8-6626-c416-dff4-29595404b72c",
+				"ec9ee769-0323-a1ca-2520-c5a837087678",
+				"58ba876a-9e75-e809-899f-0727481fa645",
+				"a2139055-a7cc-a821-dbf9-35ab6efd088e",
+				"1d769325-8c0d-a0c5-f39c-8a8b608bc543",
+				"3cde204b-dded-154e-37c3-89a520254aed",
+				"bd3eee00-190e-0de6-c33a-541bfd5b342b",
+				"1e2fff7d-681f-c218-d731-1c95aef89a19",
+				"390a77af-193c-4bf9-e04f-ed2a1b3e8b8f",
+				"61068204-5920-a0f8-9665-3428bac18fd0",
+				"44062634-71ca-c898-cd08-5290f25b2cd4",
+				"91c968d8-1717-754e-c93e-d14ee5d6d870",
+				"4566216c-8579-edfe-7617-d8053a69093e",
+				"7dbe78ba-bc36-58e6-f597-da97532e103b",
+				"e32f74eb-55bc-40c5-7c83-d1bedb3ed173"
+			],
+			"owner": "870465"
+		},
+		{
+			"id": "19af63d7-1032-ca71-3c0c-8bcfcdc5c0c7",
+			"name": "Person",
+			"description": "",
+			"order": [
+				"77449272-bdd2-58b7-ddfa-86a7643f65b4",
+				"9f05a650-97f8-785d-54ba-ce7856e0bfda",
+				"b63ef90f-73c8-aa6e-b84f-5010bb68e130",
+				"5cbb694a-f224-5f53-bfaf-3bce5da378c7",
+				"aa3929bf-d2f1-e747-a66f-bbda69fd7367"
+			],
+			"owner": "870465"
+		}
+	],
+	"timestamp": 1470822931202,
+	"owner": "870465",
+	"public": false,
+	"published": false,
+	"requests": [
+		{
+			"id": "1d769325-8c0d-a0c5-f39c-8a8b608bc543",
+			"headers": "",
+			"url": "{{url}}/news/save",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "userId",
+					"value": "{{userID}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "text",
+					"value": "L'orga est enfn sur Communecter  :)",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "date",
+					"value": "03/08/2016 12:00:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentId",
+					"value": "{{organization1}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentType",
+					"value": "organization",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "scope",
+					"value": "public",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"newsOrg\", jsonData.id.$id);\npostman.setEnvironmentVariable(\"text_newsOrg\", \"newsContent\"+jsonData.id.$id);",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470635246205,
+			"name": "Create news for Organization1",
+			"description": "Ajouter une news",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "1e2fff7d-681f-c218-d731-1c95aef89a19",
+			"headers": "",
+			"url": "https://127.0.0.1:80/ph/communecter/project/updatefield",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "pk",
+					"value": "{{project1}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "description",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "value",
+					"value": "Ceci est une nouvelle description",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470376978143,
+			"name": "Update a Project : field email",
+			"description": "Mise a jour d'un champs dans projects",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "390a77af-193c-4bf9-e04f-ed2a1b3e8b8f",
+			"headers": "",
+			"url": "https://127.0.0.1:80/ph/communecter/event/save",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "TestEvent222jgkuy",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "startDate",
+					"value": "10/08/2016 18:00:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "endDate",
+					"value": "10/08/2016 23:00:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "postalCode",
+					"value": "97421",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "city",
+					"value": "97414",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cityName",
+					"value": "LA RIVIERE",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLatitude",
+					"value": "-21.25598005",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLongitude",
+					"value": "55.437367360757",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "organizerType",
+					"value": "dontKnow",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "organizerId",
+					"value": "dontKnow",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "allDay",
+					"value": "false",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "concert",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"event1\", jsonData.id.$id);",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470377109391,
+			"name": "Create event ",
+			"description": "Créer un événement",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "3cde204b-dded-154e-37c3-89a520254aed",
+			"headers": "",
+			"url": "{{url}}/link/connect",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "childId",
+					"value": "{{organization2}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "childType",
+					"value": "organizations",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentType",
+					"value": "organizations",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentId",
+					"value": "{{organization1}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "connectType",
+					"value": "admin",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470655165623,
+			"name": "Connect organization with organization",
+			"description": "",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "44062634-71ca-c898-cd08-5290f25b2cd4",
+			"headers": "",
+			"url": "{{url}}/person/checkusername",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"data": [
+				{
+					"key": "username",
+					"value": "usertest",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "check username ",
+			"description": "check username if exist\n\nparam POST :\n    username\n    \nreturn :\n    true or false",
+			"descriptionFormat": "html",
+			"time": 1470641037781,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "4566216c-8579-edfe-7617-d8053a69093e",
+			"headers": "",
+			"url": "{{url}}/person/getthumbpath",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"data": null,
+			"dataMode": "params",
+			"name": "Get Thumb Path",
+			"description": "Get Thumb Path",
+			"descriptionFormat": "html",
+			"time": 1470641603493,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "53518e81-ba3d-9d7e-117f-05b755af886f",
+			"headers": "",
+			"url": "{{url}}/organization/save",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "organizationName",
+					"value": "TestOrganisation 2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "organizationEmail",
+					"value": "testorganization2@test.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "NGO",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "streetAddress",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "postalCode",
+					"value": "97421",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cityName",
+					"value": "LA RIVIERE",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "city",
+					"value": "97414",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "organizationCountry",
+					"value": "RE",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLatitude",
+					"value": "-21.25598005",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLongitude",
+					"value": "55.437367360757",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "role",
+					"value": "admin",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"organization2\", jsonData.id);",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470651870258,
+			"name": "Create a organization2",
+			"description": "Ajouter une organization , parametre obligatoire en POST :\n",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "58ba876a-9e75-e809-899f-0727481fa645",
+			"headers": "",
+			"url": "{{url}}/organization/save",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "organizationName",
+					"value": "TestOrganisation 3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "organizationEmail",
+					"value": "testorganization3@test.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "NGO",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "streetAddress",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "postalCode",
+					"value": "97421",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cityName",
+					"value": "LA RIVIERE",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "city",
+					"value": "97414",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "organizationCountry",
+					"value": "RE",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLatitude",
+					"value": "-21.25598005",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLongitude",
+					"value": "55.437367360757",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "role",
+					"value": "admin",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"organization3\", jsonData.id);",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470655220730,
+			"name": "Create a organization3",
+			"description": "Ajouter une organization , parametre obligatoire en POST :\n",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "5cbb694a-f224-5f53-bfaf-3bce5da378c7",
+			"headers": "",
+			"url": "{{url}}/person/register",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "User TEST 2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "usertest2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "usertest2@yahoo.fr",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pwd",
+					"value": "pixelhumain",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cp",
+					"value": "97421",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "city",
+					"value": "97414",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLatitude",
+					"value": "-21.26598005",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLongitude",
+					"value": "55.45367360757",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470648940653,
+			"name": "Register a User",
+			"description": "-----------------------EN-----------------------\nSign in to Communecter\n\n - name: User firstname and name\n - username:  Username \n - email: User email\n - pwd: User password\n\nIf the mode isn't in \"two_steps_register\", It must be added the next parameters :\n\n - cp : user postal code\n - city: insee code to the city \n - geoPosLatitude: latitude \n - geoPosLongitude: longitude\n\n\n\n-----------------------FR-----------------------\n\nS'inscrire sur Communecter\n\n - name: Prénom et Nom de l'utilisateur\n - username:  \n - email: L'email de l'utilisateur \n - pwd: Mot de passe\n\n\nSi le mode n'est pas en \"two_steps_register\", il faut rajouter les paramètres suivants :\n\n - cp : code postal de l'utilisateur\n - city: Code Insee de la commune de l'utilisateur\n - geoPosLatitude: La latitude \n - geoPosLongitude: La longitude\n",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "19af63d7-1032-ca71-3c0c-8bcfcdc5c0c7"
+		},
+		{
+			"id": "61068204-5920-a0f8-9665-3428bac18fd0",
+			"headers": "",
+			"url": "{{url}}/person/checklinkmailwithuser",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"data": null,
+			"dataMode": "params",
+			"name": "List of users followed by current user",
+			"description": "Returns a list of users followed by current user",
+			"descriptionFormat": "html",
+			"time": 1470640553573,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "7640138e-1c4e-d33e-e096-4c177dbd600c",
+			"headers": "",
+			"url": "{{url}}/link/connect",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "childId",
+					"value": "{{userID}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "childType",
+					"value": "citoyens",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentType",
+					"value": "organizations",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentId",
+					"value": "{{organization1}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "connectType",
+					"value": "admin",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470652696634,
+			"name": "Connect user with organization",
+			"description": "Connecter une personnes (child) a une organisationt, un événement ou un projet (parent)\n\nParametre en POST :\n- childId : childId\n- childType\" : childType, \n- parentType\" : parentType,\n- parentId\" : parentId,\n- connectType\" : connectType\n} \nUse case with connectType : \"member\",\"admin\", \"contributor\", \"attendee\"",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "77449272-bdd2-58b7-ddfa-86a7643f65b4",
+			"headers": "",
+			"url": "{{url}}/person/authenticate",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "usertest1@yahoo.fr",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pwd",
+					"value": "pixelhumain",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "\n\nvar jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"userID\", jsonData.id.$id);",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470378619261,
+			"name": "Authenticate User 1",
+			"description": "-----------------------EN-----------------------\nLog in to Communecter \n\nParameter in POST:\n - email : [yourMail]\n - pwd : [yourPassword]\n\n-----------------------FR-----------------------\n\nSe connecter sur Communecter\n\nParamètre en POST:\n - email : [votreEmail]\n - pwd : [votreMotDePasse]\n\n\n\n",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "19af63d7-1032-ca71-3c0c-8bcfcdc5c0c7"
+		},
+		{
+			"id": "7dbe78ba-bc36-58e6-f597-da97532e103b",
+			"headers": "",
+			"url": "{{url}}/person/logged",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"data": null,
+			"dataMode": "params",
+			"name": "Logged",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1470642021466,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "836e7368-5b94-08de-e2e4-99f6544c6ad9",
+			"headers": "",
+			"url": "{{url}}/news/save",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "userId",
+					"value": "{{userID}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "text",
+					"value": "Salut j'suis nouveau sur Communecter ",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "date",
+					"value": "03/08/2016 12:00:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentId",
+					"value": "{{userID}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentType",
+					"value": "citoyens",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "scope",
+					"value": "public",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"news1\", jsonData.id.$id);\npostman.setEnvironmentVariable(\"text_news1\", \"newsContent\"+jsonData.id.$id);",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470633613571,
+			"name": "Create news for user 1",
+			"description": "\n-----------------------EN-----------------------\nCreate a news for entity\n\nParameters in POST:\n\n - userId: User id who write the news\n - text: News text \n - date: news date to format : \"JJ/MM/AAAA HH:MM:SS\"\n - parentId: entity id when news will see\n - parentType: entity type = citoyens|organizations|projects\n - scope: visibility news: \n     - public : In the newsfeed of city, of user and his network.\n     - private : In the newsfeed of user.\n     - restricted : In the newsfeed of user and his network.\n\n-----------------------FR-----------------------\n\nAjouter une news pour une entité \n\nParamètres en POST:\n\n - userId: l'identifiant de l'utilisateur qui écrit l'actualité\n - text: Texte de l'actualité\n - date: date de l'actualité sous format : \"JJ/MM/AAAA HH:MM:SS\"\n - parentId: L'identifiant de l'entité où l'actualité sera affiché\n - parentType: Type de l'entités : citoyens|organizations|projects\n - scope: Visibilité de l'actualité : \n     - public : Sur le fil d'actualité de la commune, de l'utilisateur et de son réseau.\n     - private : Sur le fil d'actualité de l'utilisateur\n     - restricted : Sur le fil d'actualité de l'utilisateur et de son réseau\n\n\n\n",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "91c968d8-1717-754e-c93e-d14ee5d6d870",
+			"headers": "",
+			"url": "{{url}}/person/data",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"data": null,
+			"dataMode": "params",
+			"name": "Data person",
+			"description": "return tags and scope user",
+			"descriptionFormat": "html",
+			"time": 1470641277849,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "9df11bcc-d726-9bdb-f07a-331748b3fab4",
+			"headers": "",
+			"url": "{{url}}/person/sendemail",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "toto@gmail.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "validateEmail",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470746995020,
+			"name": "Send email",
+			"description": "-----------------------EN-----------------------\nSend mail for validate ou forget password\n\nParameter in POST :\n\n - email :  User email\n - type: \"validateEmail\" for validate signin or \"password\" for forget password\n\n-----------------------FR-----------------------\n\nEnvoyer un mail pour valider l'incription ou pour l'oublie de mot de passe\n\nParamètres en POST :\n - email :  User email\n - type: \"validateEmail\" pour l'inscription or \"password\" pour l'oublie de mot de passe\n",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "9f05a650-97f8-785d-54ba-ce7856e0bfda",
+			"headers": "",
+			"url": "{{url}}/person/changepassword",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"data": [
+				{
+					"key": "id",
+					"value": "{{userID}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mode",
+					"value": "changePassword",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "newPassword",
+					"value": "pixelhumain",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "oldPassword",
+					"value": "pixelhumain",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "Change passeword user",
+			"description": "-----------------------EN-----------------------\nModify user password\n\nParameter in POST :\n\n - id : User id\n - mode : You have to put the mode in \"changePassword\"\n - newPassword\t: New password\n - oldPassword\t: Old password\n\n-----------------------FR-----------------------\nModifier le mot de passe de l'utilisateur\n\nParamètre en POST :\n\n - id : L'identifiant de l'utilisateur\n - mode : Vous devez mettre le mode en \"changePassword\"\n - newPassword\t: Le nouveau mot de passe \n - oldPassword\t: L'ancien mot de passe\n",
+			"descriptionFormat": "html",
+			"time": 1470639989635,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"folder": "19af63d7-1032-ca71-3c0c-8bcfcdc5c0c7"
+		},
+		{
+			"id": "a2139055-a7cc-a821-dbf9-35ab6efd088e",
+			"headers": "",
+			"url": "https://127.0.0.1:80/ph/communecter/organization/updatefield",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "id",
+					"value": "{{organization1}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "email",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "value",
+					"value": "testj@yahoo.fr",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470375897705,
+			"name": "Update Fields email  : organization 1 ",
+			"description": "Modifier un champs d'une organisation \n\nParametre en POST\n\nidOrganisation\nnameField\nvalueField\n",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "aa3929bf-d2f1-e747-a66f-bbda69fd7367",
+			"headers": "",
+			"url": "{{url}}/person/getuseridbymail",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "mail",
+					"value": "usertest2@yahoo.fr",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"userID2\", jsonData.userId.$id);",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470653615405,
+			"name": "Get User Id by mail",
+			"description": "-----------------------EN-----------------------\nGet User Id by mail\n\nParamater in POST :\n    mail :  User mail\n\n\n\n-----------------------FR-----------------------\nDonner l'identifiant de l'utilisateur via son email\n\nParamètre en POST :\n    mail :  L'email de l'utilisateur",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "19af63d7-1032-ca71-3c0c-8bcfcdc5c0c7"
+		},
+		{
+			"id": "ab7597ee-879b-8d76-d0aa-23fb231626b3",
+			"headers": "",
+			"url": "https://127.0.0.1:80/ph/communecter/link/disconnect",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "childId",
+					"value": "{{userID}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "childType",
+					"value": "citoyens",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentType",
+					"value": "organizations",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentId",
+					"value": "{{organization1}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "connectType",
+					"value": "members",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470652709705,
+			"name": "Disconnect user with organization",
+			"description": "Supprimer un lien entre 2 entité",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "b123f082-2e36-10fc-ee7d-319dd983e635",
+			"headers": "",
+			"url": "{{url}}/organization/save",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "organizationName",
+					"value": "TestOrganisation",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "organizationEmail",
+					"value": "testorganization@test.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "type",
+					"value": "NGO",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "streetAddress",
+					"value": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "postalCode",
+					"value": "97421",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cityName",
+					"value": "LA RIVIERE",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "city",
+					"value": "97414",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "organizationCountry",
+					"value": "RE",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLatitude",
+					"value": "-21.25598005",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLongitude",
+					"value": "55.437367360757",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "role",
+					"value": "admin",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"organization1\", jsonData.id);",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470651862492,
+			"name": "Create a organization1",
+			"description": "\n-----------------------EN-----------------------\nCreate a organization\n\nParameters in POST:\n\n - organizationName: Name of organization\n - organizationEmail: Mail of organization\n - type: type of organization\n    - NGO : Association\n    - : Groupe informel\n    - : Entreprise\n    - : Groupe gouvernemental\n\n - streetAddress: number and name of the path\n - postalCode: postal code\n - cityName: name of the city\n - city: insee code of the city\n - organizationCountry: ISO Code of the country\n - geoPosLatitude: latitude\n - geoPosLongitude: longitude\n - role: role of user to organization \n    - admin : Administrater\n    - members : Member of organization\n    - \n\n-----------------------FR-----------------------\n\nAjouter une organisation\n\nParamètres en POST:\n\n - organizationName: Nom de l'organisation\n - organizationEmail: Email de l'organisation\n - type: type de l'organisation \n    - NGO : Association\n    - : Groupe informel\n    - : Entreprise\n    - : Groupe gouvernemental\n\n - streetAddress: Numéro et nom de la voie\n - postalCode: Code postal\n - cityName: Nom de la commune\n - city: Insee de la commune\n - organizationCountry: Code ISO du pays\n - geoPosLatitude: latitude\n - geoPosLongitude: longitude\n - role: le role de l'utilisateur sur l'organisation \n    - admin : Administrateur\n    - members : Membre de l'organisation\n    - \n\n\n\n\n",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "b63ef90f-73c8-aa6e-b84f-5010bb68e130",
+			"headers": "",
+			"url": "{{url}}/person/follows",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"data": [
+				{
+					"key": "invitedUserEmail",
+					"value": "toto@gmail.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "invitedUserName",
+					"value": "Toto TEST",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "msgEmail",
+					"value": "Bonjour, J'ai découvert un réseau sociétal citoyen appelé \"Communecter - être connecter à sa commune\" .  Tu peux agir concrétement autour de chez toi et découvrir ce qui s'y passe. Viens rejoindre le réseau  sur communecter.org.",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "Invite Person",
+			"description": "-----------------------EN-----------------------\nInvite a user\n\nParameters in POST :\n\n - invitedUserEmail : Mail of the guest user\n - invitedUserName : Name of the guest user \n - msgEmail : the message in the mail\n \n-----------------------FR-----------------------\n\nInviter un utilisateur\n\nParamètres en POST :\n\n - invitedUserEmail : L'email de l'utilisateur a inviter\n - invitedUserName : Le Nom et Prénom de l'utilisateur a inviter\n - msgEmail : Le message qui apparaîtra dans l'email",
+			"descriptionFormat": "html",
+			"time": 1470638905931,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"folder": "19af63d7-1032-ca71-3c0c-8bcfcdc5c0c7"
+		},
+		{
+			"id": "bd3eee00-190e-0de6-c33a-541bfd5b342b",
+			"headers": "",
+			"url": "https://127.0.0.1:80/ph/communecter/project/save",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "parentId",
+					"value": "{{userID}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentType",
+					"value": "citoyens",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "TestProject3qsdsqdsq",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "startDate",
+					"value": "10/08/2016 18:00:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "endDate",
+					"value": "10/08/2016 23:00:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "postalCode",
+					"value": "97421",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "city",
+					"value": "97414",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "cityName",
+					"value": "LA RIVIERE",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLatitude",
+					"value": "-21.25598005",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "geoPosLongitude",
+					"value": "55.437367360757",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"project1\", jsonData.id.$id);",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470377166659,
+			"name": "Create a project ",
+			"description": "Ajout d'un project",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "c762feb8-6626-c416-dff4-29595404b72c",
+			"headers": "",
+			"url": "{{url}}/organization/getbyid/id/{{organization2}}",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"data": null,
+			"dataMode": "params",
+			"name": "Get Organization by ID",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1470657939335,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "c7c34f51-d5fe-5e2f-35f3-feeb4dcf88a5",
+			"headers": "",
+			"url": "{{url}}/news/save",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "userId",
+					"value": "{{userID}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "text",
+					"value": "Salut j'suis nouveau sur Communecter ",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "date",
+					"value": "03/08/2016 12:00:00",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentId",
+					"value": "{{userID}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentType",
+					"value": "citoyens",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "scope",
+					"value": "public",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"news1\", jsonData.id.$id);\npostman.setEnvironmentVariable(\"text_news1\", \"newsContent\"+jsonData.id.$id);",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470633613571,
+			"name": "Create news for user 1",
+			"description": "\n-----------------------EN-----------------------\nCreate a news for entity\n\nParameters in POST:\n\n - userId: User id who write the news\n - text: News text \n - date: news date to format : \"JJ/MM/AAAA HH:MM:SS\"\n - parentId: entity id when news will see\n - parentType: entity type = citoyens|organizations|projects\n - scope: visibility news: \n     - public : In the newsfeed of city, of user and his network.\n     - private : In the newsfeed of user.\n     - restricted : In the newsfeed of user and his network.\n\n-----------------------FR-----------------------\n\nAjouter une news pour une entité \n\nParamètres en POST:\n\n - userId: l'identifiant de l'utilisateur qui écrit l'actualité\n - text: Texte de l'actualité\n - date: date de l'actualité sous format : \"JJ/MM/AAAA HH:MM:SS\"\n - parentId: L'identifiant de l'entité où l'actualité sera affiché\n - parentType: Type de l'entités : citoyens|organizations|projects\n - scope: Visibilité de l'actualité : \n     - public : Sur le fil d'actualité de la commune, de l'utilisateur et de son réseau.\n     - private : Sur le fil d'actualité de l'utilisateur\n     - restricted : Sur le fil d'actualité de l'utilisateur et de son réseau\n\n\n\n",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "c9b9f55c-251c-5042-7f1b-2c97a1e62f94",
+			"headers": "",
+			"url": "{{url}}/news/delete/id/{{news1}}",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"data": [],
+			"dataMode": "params",
+			"name": "Delete a news",
+			"description": "-----------------------EN-----------------------\nDelete a news\n\nParameter in GET:\n\n - id : News id\n\n\n\n-----------------------FR-----------------------\nSupprimer une actualité\n\nParamètre en GET:\n\n - id : identifiant de l'actualité",
+			"descriptionFormat": "html",
+			"time": 1470659462139,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "e32f74eb-55bc-40c5-7c83-d1bedb3ed173",
+			"headers": "",
+			"url": "{{url}}/project/get/id/{{project1}}",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"data": null,
+			"dataMode": "params",
+			"name": "Get Project by Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1470658134044,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "e79af0a0-4e21-d543-52be-e19f8e019704",
+			"headers": "",
+			"url": "{{url}}/link/follow",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "childId",
+					"value": "{{userID}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "childType",
+					"value": "citoyens",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentId",
+					"value": "{{userID2}}",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "parentType",
+					"value": "citoyens",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470653618084,
+			"name": "Follow",
+			"description": "-----------------------EN-----------------------\nFollow a entity (Person|Organization|Project)\n\nParameters in POST :\n\n - childId: User id\n - childType: User Type = \"citoyens\"\n - parentId: Entity id\n - parentType: Entity type : citoyens|organizations|projects\n\n-----------------------FR-----------------------\nSuivre une entité (Person|Organization|Project)\n\nParamètres en POST :\n\n - childId: L'identifiant de l'utilisateur\n - childType: le type de l'utilisateur = \"citoyens\"\n - parentId: L'identifiant de l'entité\n - parentType: Le type de l'entité = citoyens|organizations|projects",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "ea7ea3c7-f5bc-325e-3fd7-dcf520b655f6",
+			"headers": "",
+			"url": "{{url}}/person/authenticate",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "email",
+					"value": "usertest1@yahoo.fr",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pwd",
+					"value": "pixelhumain",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "\n\nvar jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"userID\", jsonData.id.$id);",
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470378619261,
+			"name": "Authenticate User 1",
+			"description": "-----------------------EN-----------------------\nLog in to Communecter \n\nParameter in POST:\n - email : [yourMail]\n - pwd : [yourPassword]\n\n-----------------------FR-----------------------\n\nSe connecter sur Communecter\n\nParamètre en POST:\n - email : [votreEmail]\n - pwd : [votreMotDePasse]\n\n",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		},
+		{
+			"id": "ec9ee769-0323-a1ca-2520-c5a837087678",
+			"headers": "",
+			"url": "{{url}}/organization/disabled/id/{{organization3}}",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": "{}",
+			"time": 1470656405688,
+			"name": "Disable Organization",
+			"description": "Param Get\nid organization ",
+			"collectionId": "93b3bad7-3907-8879-9089-54f288f164ad",
+			"responses": [],
+			"folder": "8b2a0473-1fda-8de3-79c6-080a55f02bf7"
+		}
+	]
+}

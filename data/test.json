@@ -1,0 +1,1296 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Documentation",
+		"_postman_id": "93b3bad7-3907-8879-9089-54f288f164ad",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autres",
+			"description": "",
+			"item": [
+				{
+					"name": "Follow",
+					"request": {
+						"url": "{{url}}/link/follow",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "childId",
+									"value": "{{userID}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "childType",
+									"value": "citoyens",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentId",
+									"value": "{{userID2}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentType",
+									"value": "citoyens",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "-----------------------EN-----------------------\nFollow a entity (Person|Organization|Project)\n\nParameters in POST :\n\n - childId: User id\n - childType: User Type = \"citoyens\"\n - parentId: Entity id\n - parentType: Entity type : citoyens|organizations|projects\n\n-----------------------FR-----------------------\nSuivre une entité (Person|Organization|Project)\n\nParamètres en POST :\n\n - childId: L'identifiant de l'utilisateur\n - childType: le type de l'utilisateur = \"citoyens\"\n - parentId: L'identifiant de l'entité\n - parentType: Le type de l'entité = citoyens|organizations|projects"
+					},
+					"response": []
+				},
+				{
+					"name": "Send email",
+					"request": {
+						"url": "{{url}}/person/sendemail",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "toto@gmail.com",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "type",
+									"value": "validateEmail",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "-----------------------EN-----------------------\nSend mail for validate ou forget password\n\nParameter in POST :\n\n - email :  User email\n - type: \"validateEmail\" for validate signin or \"password\" for forget password\n\n-----------------------FR-----------------------\n\nEnvoyer un mail pour valider l'incription ou pour l'oublie de mot de passe\n\nParamètres en POST :\n - email :  User email\n - type: \"validateEmail\" pour l'inscription or \"password\" pour l'oublie de mot de passe\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate User 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "\n\nvar jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"userID\", jsonData.id.$id);"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/person/authenticate",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "usertest1@yahoo.fr",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "pwd",
+									"value": "pixelhumain",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "-----------------------EN-----------------------\nLog in to Communecter \n\nParameter in POST:\n - email : [yourMail]\n - pwd : [yourPassword]\n\n-----------------------FR-----------------------\n\nSe connecter sur Communecter\n\nParamètre en POST:\n - email : [votreEmail]\n - pwd : [votreMotDePasse]\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create news for user 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"news1\", jsonData.id.$id);\npostman.setEnvironmentVariable(\"text_news1\", \"newsContent\"+jsonData.id.$id);"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/news/save",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "{{userID}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "text",
+									"value": "Salut j'suis nouveau sur Communecter ",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "date",
+									"value": "03/08/2016 12:00:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentId",
+									"value": "{{userID}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentType",
+									"value": "citoyens",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "scope",
+									"value": "public",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "\n-----------------------EN-----------------------\nCreate a news for entity\n\nParameters in POST:\n\n - userId: User id who write the news\n - text: News text \n - date: news date to format : \"JJ/MM/AAAA HH:MM:SS\"\n - parentId: entity id when news will see\n - parentType: entity type = citoyens|organizations|projects\n - scope: visibility news: \n     - public : In the newsfeed of city, of user and his network.\n     - private : In the newsfeed of user.\n     - restricted : In the newsfeed of user and his network.\n\n-----------------------FR-----------------------\n\nAjouter une news pour une entité \n\nParamètres en POST:\n\n - userId: l'identifiant de l'utilisateur qui écrit l'actualité\n - text: Texte de l'actualité\n - date: date de l'actualité sous format : \"JJ/MM/AAAA HH:MM:SS\"\n - parentId: L'identifiant de l'entité où l'actualité sera affiché\n - parentType: Type de l'entités : citoyens|organizations|projects\n - scope: Visibilité de l'actualité : \n     - public : Sur le fil d'actualité de la commune, de l'utilisateur et de son réseau.\n     - private : Sur le fil d'actualité de l'utilisateur\n     - restricted : Sur le fil d'actualité de l'utilisateur et de son réseau\n\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a news",
+					"request": {
+						"url": "{{url}}/news/delete/id/{{news1}}",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "-----------------------EN-----------------------\nDelete a news\n\nParameter in GET:\n\n - id : News id\n\n\n\n-----------------------FR-----------------------\nSupprimer une actualité\n\nParamètre en GET:\n\n - id : identifiant de l'actualité"
+					},
+					"response": []
+				},
+				{
+					"name": "Create news for user 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"news1\", jsonData.id.$id);\npostman.setEnvironmentVariable(\"text_news1\", \"newsContent\"+jsonData.id.$id);"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/news/save",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "{{userID}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "text",
+									"value": "Salut j'suis nouveau sur Communecter ",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "date",
+									"value": "03/08/2016 12:00:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentId",
+									"value": "{{userID}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentType",
+									"value": "citoyens",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "scope",
+									"value": "public",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "\n-----------------------EN-----------------------\nCreate a news for entity\n\nParameters in POST:\n\n - userId: User id who write the news\n - text: News text \n - date: news date to format : \"JJ/MM/AAAA HH:MM:SS\"\n - parentId: entity id when news will see\n - parentType: entity type = citoyens|organizations|projects\n - scope: visibility news: \n     - public : In the newsfeed of city, of user and his network.\n     - private : In the newsfeed of user.\n     - restricted : In the newsfeed of user and his network.\n\n-----------------------FR-----------------------\n\nAjouter une news pour une entité \n\nParamètres en POST:\n\n - userId: l'identifiant de l'utilisateur qui écrit l'actualité\n - text: Texte de l'actualité\n - date: date de l'actualité sous format : \"JJ/MM/AAAA HH:MM:SS\"\n - parentId: L'identifiant de l'entité où l'actualité sera affiché\n - parentType: Type de l'entités : citoyens|organizations|projects\n - scope: Visibilité de l'actualité : \n     - public : Sur le fil d'actualité de la commune, de l'utilisateur et de son réseau.\n     - private : Sur le fil d'actualité de l'utilisateur\n     - restricted : Sur le fil d'actualité de l'utilisateur et de son réseau\n\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a organization1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"organization1\", jsonData.id);"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/organization/save",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "organizationName",
+									"value": "TestOrganisation",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "organizationEmail",
+									"value": "testorganization@test.com",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "type",
+									"value": "NGO",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "streetAddress",
+									"value": "",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "postalCode",
+									"value": "97421",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "cityName",
+									"value": "LA RIVIERE",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "city",
+									"value": "97414",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "organizationCountry",
+									"value": "RE",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLatitude",
+									"value": "-21.25598005",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLongitude",
+									"value": "55.437367360757",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "\n-----------------------EN-----------------------\nCreate a organization\n\nParameters in POST:\n\n - organizationName: Name of organization\n - organizationEmail: Mail of organization\n - type: type of organization\n    - NGO : Association\n    - : Groupe informel\n    - : Entreprise\n    - : Groupe gouvernemental\n\n - streetAddress: number and name of the path\n - postalCode: postal code\n - cityName: name of the city\n - city: insee code of the city\n - organizationCountry: ISO Code of the country\n - geoPosLatitude: latitude\n - geoPosLongitude: longitude\n - role: role of user to organization \n    - admin : Administrater\n    - members : Member of organization\n    - \n\n-----------------------FR-----------------------\n\nAjouter une organisation\n\nParamètres en POST:\n\n - organizationName: Nom de l'organisation\n - organizationEmail: Email de l'organisation\n - type: type de l'organisation \n    - NGO : Association\n    - : Groupe informel\n    - : Entreprise\n    - : Groupe gouvernemental\n\n - streetAddress: Numéro et nom de la voie\n - postalCode: Code postal\n - cityName: Nom de la commune\n - city: Insee de la commune\n - organizationCountry: Code ISO du pays\n - geoPosLatitude: latitude\n - geoPosLongitude: longitude\n - role: le role de l'utilisateur sur l'organisation \n    - admin : Administrateur\n    - members : Membre de l'organisation\n    - \n\n\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Disconnect user with organization",
+					"request": {
+						"url": "https://127.0.0.1:80/ph/communecter/link/disconnect",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "childId",
+									"value": "{{userID}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "childType",
+									"value": "citoyens",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentType",
+									"value": "organizations",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentId",
+									"value": "{{organization1}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "connectType",
+									"value": "members",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Supprimer un lien entre 2 entité"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a organization2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"organization2\", jsonData.id);"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/organization/save",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "organizationName",
+									"value": "TestOrganisation 2",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "organizationEmail",
+									"value": "testorganization2@test.com",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "type",
+									"value": "NGO",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "streetAddress",
+									"value": "",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "postalCode",
+									"value": "97421",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "cityName",
+									"value": "LA RIVIERE",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "city",
+									"value": "97414",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "organizationCountry",
+									"value": "RE",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLatitude",
+									"value": "-21.25598005",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLongitude",
+									"value": "55.437367360757",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Ajouter une organization , parametre obligatoire en POST :\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Connect user with organization",
+					"request": {
+						"url": "{{url}}/link/connect",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "childId",
+									"value": "{{userID}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "childType",
+									"value": "citoyens",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentType",
+									"value": "organizations",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentId",
+									"value": "{{organization1}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "connectType",
+									"value": "admin",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Connecter une personnes (child) a une organisationt, un événement ou un projet (parent)\n\nParametre en POST :\n- childId : childId\n- childType\" : childType, \n- parentType\" : parentType,\n- parentId\" : parentId,\n- connectType\" : connectType\n} \nUse case with connectType : \"member\",\"admin\", \"contributor\", \"attendee\""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Organization by ID",
+					"request": {
+						"url": "{{url}}/organization/getbyid/id/{{organization2}}",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Disable Organization",
+					"request": {
+						"url": "{{url}}/organization/disabled/id/{{organization3}}",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Param Get\nid organization "
+					},
+					"response": []
+				},
+				{
+					"name": "Create a organization3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"organization3\", jsonData.id);"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/organization/save",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "organizationName",
+									"value": "TestOrganisation 3",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "organizationEmail",
+									"value": "testorganization3@test.com",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "type",
+									"value": "NGO",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "streetAddress",
+									"value": "",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "postalCode",
+									"value": "97421",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "cityName",
+									"value": "LA RIVIERE",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "city",
+									"value": "97414",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "organizationCountry",
+									"value": "RE",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLatitude",
+									"value": "-21.25598005",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLongitude",
+									"value": "55.437367360757",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Ajouter une organization , parametre obligatoire en POST :\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Fields email  : organization 1 ",
+					"request": {
+						"url": "https://127.0.0.1:80/ph/communecter/organization/updatefield",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "{{organization1}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "name",
+									"value": "email",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "value",
+									"value": "testj@yahoo.fr",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Modifier un champs d'une organisation \n\nParametre en POST\n\nidOrganisation\nnameField\nvalueField\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Create news for Organization1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"newsOrg\", jsonData.id.$id);\npostman.setEnvironmentVariable(\"text_newsOrg\", \"newsContent\"+jsonData.id.$id);"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/news/save",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "{{userID}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "text",
+									"value": "L'orga est enfn sur Communecter  :)",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "date",
+									"value": "03/08/2016 12:00:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentId",
+									"value": "{{organization1}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentType",
+									"value": "organization",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "scope",
+									"value": "public",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Ajouter une news"
+					},
+					"response": []
+				},
+				{
+					"name": "Connect organization with organization",
+					"request": {
+						"url": "{{url}}/link/connect",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "childId",
+									"value": "{{organization2}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "childType",
+									"value": "organizations",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentType",
+									"value": "organizations",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentId",
+									"value": "{{organization1}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "connectType",
+									"value": "admin",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Connecter une personnes (child) a une organisationt, un événement ou un projet (parent)\n\nParametre en POST :\n- childId : childId\n- childType\" : childType, \n- parentType\" : parentType,\n- parentId\" : parentId,\n- connectType\" : connectType\n} \nUse case with connectType : \"member\",\"admin\", \"contributor\", \"attendee\""
+					},
+					"response": []
+				},
+				{
+					"name": "Create a project ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"project1\", jsonData.id.$id);"
+							}
+						}
+					],
+					"request": {
+						"url": "https://127.0.0.1:80/ph/communecter/project/save",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "parentId",
+									"value": "{{userID}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "parentType",
+									"value": "citoyens",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "name",
+									"value": "TestProject3qsdsqdsq",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "startDate",
+									"value": "10/08/2016 18:00:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "10/08/2016 23:00:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "postalCode",
+									"value": "97421",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "city",
+									"value": "97414",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "cityName",
+									"value": "LA RIVIERE",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLatitude",
+									"value": "-21.25598005",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLongitude",
+									"value": "55.437367360757",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Ajout d'un project"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a Project : field email",
+					"request": {
+						"url": "https://127.0.0.1:80/ph/communecter/project/updatefield",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "pk",
+									"value": "{{project1}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "name",
+									"value": "description",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "value",
+									"value": "Ceci est une nouvelle description",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Mise a jour d'un champs dans projects"
+					},
+					"response": []
+				},
+				{
+					"name": "Create event ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"event1\", jsonData.id.$id);"
+							}
+						}
+					],
+					"request": {
+						"url": "https://127.0.0.1:80/ph/communecter/event/save",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "TestEvent222jgkuy",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "startDate",
+									"value": "10/08/2016 18:00:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "10/08/2016 23:00:00",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "postalCode",
+									"value": "97421",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "city",
+									"value": "97414",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "cityName",
+									"value": "LA RIVIERE",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLatitude",
+									"value": "-21.25598005",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLongitude",
+									"value": "55.437367360757",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "organizerType",
+									"value": "dontKnow",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "organizerId",
+									"value": "dontKnow",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "allDay",
+									"value": "false",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "type",
+									"value": "concert",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Créer un événement"
+					},
+					"response": []
+				},
+				{
+					"name": "List of users followed by current user",
+					"request": {
+						"url": "{{url}}/person/checklinkmailwithuser",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Returns a list of users followed by current user"
+					},
+					"response": []
+				},
+				{
+					"name": "check username ",
+					"request": {
+						"url": "{{url}}/person/checkusername",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "usertest",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "check username if exist\n\nparam POST :\n    username\n    \nreturn :\n    true or false"
+					},
+					"response": []
+				},
+				{
+					"name": "Data person",
+					"request": {
+						"url": "{{url}}/person/data",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "return tags and scope user"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Thumb Path",
+					"request": {
+						"url": "{{url}}/person/getthumbpath",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Get Thumb Path"
+					},
+					"response": []
+				},
+				{
+					"name": "Logged",
+					"request": {
+						"url": "{{url}}/person/logged",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project by Id",
+					"request": {
+						"url": "{{url}}/project/get/id/{{project1}}",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Person",
+			"description": "",
+			"item": [
+				{
+					"name": "Authenticate User 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "\n\nvar jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"userID\", jsonData.id.$id);"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/person/authenticate",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "usertest1@yahoo.fr",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "pwd",
+									"value": "pixelhumain",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "-----------------------EN-----------------------\nLog in to Communecter \n\nParameter in POST:\n - email : [yourMail]\n - pwd : [yourPassword]\n\n-----------------------FR-----------------------\n\nSe connecter sur Communecter\n\nParamètre en POST:\n - email : [votreEmail]\n - pwd : [votreMotDePasse]\n\n\n\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Change passeword user",
+					"request": {
+						"url": "{{url}}/person/changepassword",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "{{userID}}",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "mode",
+									"value": "changePassword",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "newPassword",
+									"value": "pixelhumain",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "oldPassword",
+									"value": "pixelhumain",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "-----------------------EN-----------------------\nModify user password\n\nParameter in POST :\n\n - id : User id\n - mode : You have to put the mode in \"changePassword\"\n - newPassword\t: New password\n - oldPassword\t: Old password\n\n-----------------------FR-----------------------\nModifier le mot de passe de l'utilisateur\n\nParamètre en POST :\n\n - id : L'identifiant de l'utilisateur\n - mode : Vous devez mettre le mode en \"changePassword\"\n - newPassword\t: Le nouveau mot de passe \n - oldPassword\t: L'ancien mot de passe\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Invite Person",
+					"request": {
+						"url": "{{url}}/person/follows",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "invitedUserEmail",
+									"value": "toto@gmail.com",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "invitedUserName",
+									"value": "Toto TEST",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "msgEmail",
+									"value": "Bonjour, J'ai découvert un réseau sociétal citoyen appelé \"Communecter - être connecter à sa commune\" .  Tu peux agir concrétement autour de chez toi et découvrir ce qui s'y passe. Viens rejoindre le réseau  sur communecter.org.",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "-----------------------EN-----------------------\nInvite a user\n\nParameters in POST :\n\n - invitedUserEmail : Mail of the guest user\n - invitedUserName : Name of the guest user \n - msgEmail : the message in the mail\n \n-----------------------FR-----------------------\n\nInviter un utilisateur\n\nParamètres en POST :\n\n - invitedUserEmail : L'email de l'utilisateur a inviter\n - invitedUserName : Le Nom et Prénom de l'utilisateur a inviter\n - msgEmail : Le message qui apparaîtra dans l'email"
+					},
+					"response": []
+				},
+				{
+					"name": "Register a User",
+					"request": {
+						"url": "{{url}}/person/register",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "User TEST 2",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "username",
+									"value": "usertest2",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "email",
+									"value": "usertest2@yahoo.fr",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "pwd",
+									"value": "pixelhumain",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "cp",
+									"value": "97421",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "city",
+									"value": "97414",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLatitude",
+									"value": "-21.26598005",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "geoPosLongitude",
+									"value": "55.45367360757",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "-----------------------EN-----------------------\nSign in to Communecter\n\n - name: User firstname and name\n - username:  Username \n - email: User email\n - pwd: User password\n\nIf the mode isn't in \"two_steps_register\", It must be added the next parameters :\n\n - cp : user postal code\n - city: insee code to the city \n - geoPosLatitude: latitude \n - geoPosLongitude: longitude\n\n\n\n-----------------------FR-----------------------\n\nS'inscrire sur Communecter\n\n - name: Prénom et Nom de l'utilisateur\n - username:  \n - email: L'email de l'utilisateur \n - pwd: Mot de passe\n\n\nSi le mode n'est pas en \"two_steps_register\", il faut rajouter les paramètres suivants :\n\n - cp : code postal de l'utilisateur\n - city: Code Insee de la commune de l'utilisateur\n - geoPosLatitude: La latitude \n - geoPosLongitude: La longitude\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Id by mail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"userID2\", jsonData.userId.$id);"
+							}
+						}
+					],
+					"request": {
+						"url": "{{url}}/person/getuseridbymail",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "mail",
+									"value": "usertest2@yahoo.fr",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "-----------------------EN-----------------------\nGet User Id by mail\n\nParamater in POST :\n    mail :  User mail\n\n\n\n-----------------------FR-----------------------\nDonner l'identifiant de l'utilisateur via son email\n\nParamètre en POST :\n    mail :  L'email de l'utilisateur"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
