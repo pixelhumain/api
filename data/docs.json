@@ -856,7 +856,7 @@
 			],
 			"dataMode": "urlencoded",
 			"name": "Change passeword user",
-			"description": "-----------------------EN-----------------------\nModify user password\n\nParameter in POST :\n\n - id : User id\n - mode : You have to put the mode in \"changePassword\"\n - newPassword\t: New password\n - oldPassword\t: Old password\n\n-----------------------FR-----------------------\nModifier le mot de passe de l'utilisateur\n\nParamètre en POST :\n\n - id : L'identifiant de l'utilisateur\n - mode : Vous devez mettre le mode en \"changePassword\"\n - newPassword\t: Le nouveau mot de passe \n - oldPassword\t: L'ancien mot de passe\n",
+			"description": "# -----------------------EN-----------------------\n Modify user password \n Parameter in POST : \n \n - id : User id \n - mode : You have to put the mode in \"changePassword\" \n - newPassword\t: New password\n - oldPassword\t: Old password \n \n-----------------------FR-----------------------\nModifier le mot de passe de l'utilisateur\n\nParamètre en POST :\n\n - id : L'identifiant de l'utilisateur\n - mode : Vous devez mettre le mode en \"changePassword\"\n - newPassword\t: Le nouveau mot de passe \n - oldPassword\t: L'ancien mot de passe\n",
 			"descriptionFormat": "html",
 			"time": 1470639989635,
 			"version": 2,

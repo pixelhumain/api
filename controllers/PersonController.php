@@ -23,7 +23,16 @@ class PersonController extends ApiController {
 
 	public function actions(){
 	    return array(
-	        'authenticate'       => 'citizenToolKit.controllers.person.AuthenticateAction',    
+          'get'                   => 'citizenToolKit.controllers.person.GetAction', 
+	        'authenticate'          => 'citizenToolKit.controllers.person.AuthenticateAction',
+          'changepassword'     => 'citizenToolKit.controllers.person.ChangePasswordAction',
+          'register'           => 'citizenToolKit.controllers.person.RegisterAction',
+          'getuseridbymail'   => 'citizenToolKit.controllers.person.GetUserIdByMailAction',
+          'updatefield'        => 'citizenToolKit.controllers.person.UpdateFieldAction',
+          /*
+          'update'             => 'citizenToolKit.controllers.person.UpdateAction',
+          "updatesettings"    => 'citizenToolKit.controllers.person.UpdateSettingsAction',
+          */
 	    );
 	}
 }

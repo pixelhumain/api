@@ -21,7 +21,26 @@ class ApiController extends Controller
   public $pages = array(
 
     "default"=> array(
-        "index"                => array("href" => "/ph/api/default/index", "public" => true),
+        "index"              => array("href" => "/ph/api/default/index", "public" => true),
+    ),
+    "person"=> array(
+        "get"                 => array("href" => "/ph/api/person/get", "public" => true),
+        "authenticate"        => array("href" => "/ph/api/person/authenticate",'title' => "Authentication"),
+        'changepassword'      => array("href" => "/ph/api/person/changepassword"),
+        "register"            => array("href" => "/ph/api/person/register"),
+        'getuseridbymail'     => array("href" => "/ph/api/getuseridbymail"),
+        "updatefield"         => array("href" => "/ph/api/person/updatefield"),
+      
+        
+    ),
+    "organization"=> array(
+        "get"                => array("href" => "/ph/api/organization/get", "public" => true),
+    ),
+    "event"=> array(
+        "get"                => array("href" => "/ph/api/event/get", "public" => true),
+    ),
+    "project"=> array(
+        "get"                => array("href" => "/ph/api/project/get", "public" => true),
     )
 
   );
