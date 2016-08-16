@@ -25,22 +25,7 @@ class DefaultController extends ApiController {
 	public function actionIndex() 
 	{
     $this->layout = "//layouts/mainApi";
-    $docsJSON = str_replace("'", "&quot;", file_get_contents("../../modules/api/data/docs.json", FILE_USE_INCLUDE_PATH));
-    
-    $docs = json_decode($docsJSON,true);
-
-    foreach ($docs["requests"] as $key => $value) {
-      $value["tests"] = "";
-      $docs["requests"][$key] = $value;
-    }
-    $docsJSON = json_encode($docs);
-
-    //$docsJSON = str_replace(array("\n\n", "\r\n", "\n", "\r"), "", $docsJSON);
-   
-    //$sub = substr ( $docsJSON,5725);
-    $params = array("docs" => $docs,
-                    "json" => $docsJSON);
-    $this->render("index2", $params);
+    $this->render("index");
   }
 
   
