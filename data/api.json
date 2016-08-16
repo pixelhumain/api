@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "version": "0.0.1",
-        "title": "Hello World App"
+        "title": "Communecter API"
     },
     "host": "127.0.0.1:80",
     "basePath": "/ph/api",
@@ -19,7 +19,28 @@
         "person-id": {
             "name": "person-id",
             "in": "path",
-            "description": "The user identifier string",
+            "description": "The person identifier string",
+            "type": "string",
+            "required": true
+        },
+        "organization-id": {
+            "name": "organization-id",
+            "in": "path",
+            "description": "The organization identifier string",
+            "type": "string",
+            "required": true
+        },
+        "event-id": {
+            "name": "event-id",
+            "in": "path",
+            "description": "The event identifier string",
+            "type": "string",
+            "required": true
+        },
+        "project-id": {
+            "name": "project-id",
+            "in": "path",
+            "description": "The project identifier string",
             "type": "string",
             "required": true
         }
@@ -30,10 +51,10 @@
                 "tags": [
                     "Person"
                 ],
-                "description": "Get basic information about a person.",
+                "description": "Get information about all persons.",
                 "responses": {
                     "200": {
-                        "description": "The user object",
+                        "description": "The list of person.",
                         "schema": {
                             "type": "object",
                             "properties": {
@@ -56,15 +77,295 @@
                         "$ref": "#/parameters/person-id"
                     }
                 ],
-                "description": "Get basic information about a person.",
+                "description": "Get information about a person.",
                 "responses": {
                     "200": {
-                        "description": "The user object",
+                        "description": "The person object",
                         "schema": {
                             "type": "object",
                             "properties": {
                                 "data": {
                                     "$ref": "#/definitions/Person"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/person/authenticate": {
+            "post": {
+                "tags": [
+                    "Person"
+                ],
+                "description": "Authenticate.",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "email",
+                        "description": "Email of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "pwd",
+                        "description": "Password of user",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of authenticate.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/person/changepassword": {
+            "post": {
+                "tags": [
+                    "Person"
+                ],
+                "description": "Modify user password .",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "id",
+                        "description": "Id of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "mode",
+                        "description": "You have to put the mode in \"changePassword\"",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "newPassword",
+                        "description": "New password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "oldPassword",
+                        "description": "Old password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of changepassword.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/person/register": {
+            "post": {
+                "tags": [
+                    "Person"
+                ],
+                "description": "Sign in to Communecter .",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "name",
+                        "description": "User firstname and name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "username",
+                        "description": "Username of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "email",
+                        "description": "User email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "pwd",
+                        "description": "User password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of changepassword.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/organization/get": {
+            "get": {
+                "tags": [
+                    "Organization"
+                ],
+                "description": "Get information about all organizations.",
+                "responses": {
+                    "200": {
+                        "description": "The list of organization",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Organization"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/organization/get/id/{organization-id}": {
+            "get": {
+                "tags": [
+                    "Organization"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/organization-id"
+                    }
+                ],
+                "description": "Get information about a organization.",
+                "responses": {
+                    "200": {
+                        "description": "The organization object",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Organization"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/event/get": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "description": "Get information about all events.",
+                "responses": {
+                    "200": {
+                        "description": "The list of events",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Event"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/event/get/id/{event-id}": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/event-id"
+                    }
+                ],
+                "description": "Get information about a event.",
+                "responses": {
+                    "200": {
+                        "description": "The event object",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Event"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/project/get": {
+            "get": {
+                "tags": [
+                    "Project"
+                ],
+                "description": "Get information about all projects.",
+                "responses": {
+                    "200": {
+                        "description": "The list of projects.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Project"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/project/get/id/{project-id}": {
+            "get": {
+                "tags": [
+                    "Project"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/project-id"
+                    }
+                ],
+                "description": "Get information about a project.",
+                "responses": {
+                    "200": {
+                        "description": "The project object",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Project"
                                 }
                             }
                         }
@@ -79,6 +380,23 @@
             "properties": {
                 "id": {
                     "type": "string",
+                    "description": "Unique identifier representing a specific organization"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of user."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of organization."
+                }
+            }
+        },
+        "Organization": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
                     "description": "Unique identifier representing a specific person"
                 },
                 "name": {
@@ -88,6 +406,53 @@
                 "description": {
                     "type": "string",
                     "description": "Description of user."
+                }
+            }
+        },
+        "Event": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier representing a specific event"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of user."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of event."
+                }
+            }
+        },
+        "Project": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier representing a specific project"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of user."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of project."
+                }
+            }
+        },
+        "Result": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "type": "boolean",
+                    "description": "Boolean"
+                },
+                "msg": {
+                    "type": "string",
+                    "description": "Message return."
                 }
             }
         },

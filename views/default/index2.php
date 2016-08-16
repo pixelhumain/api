@@ -56,15 +56,21 @@
 
 <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+<?php
+
+    
+    $url = Yii::app()->createUrl("/api/data/get/");
+?>
 <script type="text/javascript">
 
-	var baseUrl2 = "<?php echo Yii::app()->theme->baseUrl ; ?>"
+	var baseUrl2 = "<?php echo $url ; ?>"
+  console.log("baseUrl2", baseUrl2);
     $(function () {
       var url = window.location.search.match(/url=([^&]+)/);
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "https://127.0.0.1:80/html/workspaceWeb/test/swagger-ui-2.1.4/test/specs/v1.2/petstore/api.json";
+        url = "https://127.0.0.1:80/ph/api/data/get/";
       }
 
       // Pre load translate...

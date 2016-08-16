@@ -19,7 +19,9 @@ class ApiController extends Controller
   //TODO - Les children ne s'affichent pas dans le menu
  
   public $pages = array(
-
+    "data"=> array(
+        "get"              => array("href" => "/ph/api/data/get", "public" => true),
+    ),
     "default"=> array(
         "index"              => array("href" => "/ph/api/default/index", "public" => true),
     ),
