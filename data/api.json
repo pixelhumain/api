@@ -1,0 +1,110 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.0.1",
+        "title": "Hello World App"
+    },
+    "host": "127.0.0.1:80",
+    "basePath": "/ph/api",
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "parameters": {
+        "person-id": {
+            "name": "person-id",
+            "in": "path",
+            "description": "The user identifier string",
+            "type": "string",
+            "required": true
+        }
+    },
+    "paths": {
+        "/person/get": {
+            "get": {
+                "tags": [
+                    "Person"
+                ],
+                "description": "Get basic information about a person.",
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Person"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/person/get/id/{person-id}": {
+            "get": {
+                "tags": [
+                    "Person"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/person-id"
+                    }
+                ],
+                "description": "Get basic information about a person.",
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Person"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Person": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier representing a specific person"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of user."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of user."
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -40,7 +40,7 @@ class DefaultController extends ApiController {
     //$sub = substr ( $docsJSON,5725);
     $params = array("docs" => $docs,
                     "json" => $docsJSON);
-    $this->render("index", $params);
+    $this->render("index2", $params);
   }
 
   
