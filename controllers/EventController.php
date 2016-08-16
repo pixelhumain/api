@@ -9,6 +9,7 @@ class EventController extends ApiController {
 	public function actions(){
 	    return array(
           'get'                   => 'citizenToolKit.controllers.event.GetAction', 
+          'updatefield'           => 'citizenToolKit.controllers.event.UpdateFieldAction', 
 	    );
 	}
 }

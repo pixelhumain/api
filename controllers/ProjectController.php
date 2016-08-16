@@ -8,7 +8,8 @@ class ProjectController extends ApiController {
 
 	public function actions(){
 	    return array(
-          'get'                   => 'citizenToolKit.controllers.project.GetAction', 
+          'get'                   => 'citizenToolKit.controllers.project.GetAction',
+          'updatefield'           => 'citizenToolKit.controllers.project.UpdateFieldAction', 
 	    );
 	}
 }

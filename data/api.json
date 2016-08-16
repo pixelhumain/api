@@ -232,6 +232,80 @@
                 }
             }
         },
+        "/person/getuseridbymail": {
+            "post": {
+                "tags": [
+                    "Person"
+                ],
+                "description": "Get User Id by mail .",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "mail",
+                        "description": "User mail",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/person/updatefield": {
+            "post": {
+                "tags": [
+                    "Person"
+                ],
+                "description": "Update field of the user .",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "id",
+                        "description": "Id of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "name",
+                        "description": "The name of field.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "value",
+                        "description": "The value of field.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of authenticate.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/organization/get": {
             "get": {
                 "tags": [
@@ -272,6 +346,50 @@
                             "properties": {
                                 "data": {
                                     "$ref": "#/definitions/Organization"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/organization/updatefield": {
+            "post": {
+                "tags": [
+                    "Organization"
+                ],
+                "description": "Update field of the organization .",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "id",
+                        "description": "Id of organization",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "name",
+                        "description": "The name of field.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "value",
+                        "description": "The value of field.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of authenticate.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
                                 }
                             }
                         }
@@ -326,6 +444,50 @@
                 }
             }
         },
+        "/event/updatefield": {
+            "post": {
+                "tags": [
+                    "Event"
+                ],
+                "description": "Update field of the event .",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "id",
+                        "description": "Id of event",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "name",
+                        "description": "The name of field.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "value",
+                        "description": "The value of field.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of authenticate.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/project/get": {
             "get": {
                 "tags": [
@@ -366,6 +528,245 @@
                             "properties": {
                                 "data": {
                                     "$ref": "#/definitions/Project"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/project/updatefield": {
+            "post": {
+                "tags": [
+                    "Project"
+                ],
+                "description": "Update field of the project .",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "id",
+                        "description": "Id of project",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "name",
+                        "description": "The name of field.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "value",
+                        "description": "The value of field.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of authenticate.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/link/follow": {
+            "post": {
+                "tags": [
+                    "Link"
+                ],
+                "description": "Follow a entity (Person|Organization|Project) .",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "childId",
+                        "description": "User id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "childType",
+                        "description": "User Type = \"citoyens\"",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "parentId",
+                        "description": "Entity id.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "parentType",
+                        "description": "Entity type = citoyens|organizations|projects.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of authenticate.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/link/connect": {
+            "post": {
+                "tags": [
+                    "Link"
+                ],
+                "description": "Connect a entity (child)  with other entity (parent). Entity = ( 'Person' | 'Organization' | 'Project '| 'Event' )",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "childId",
+                        "description": "User id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "childType",
+                        "description": "Entity type = citoyens|organizations|projects|events.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "parentId",
+                        "description": "Entity id.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "parentType",
+                        "description": "Entity type = citoyens|organizations|projects|events.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "connectType",
+                        "description": "Use case with connectType = \"member\",\"admin\", \"contributor\" or \"attendee\" .",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of authenticate.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/link/disconnect": {
+            "post": {
+                "tags": [
+                    "Link"
+                ],
+                "description": "Remove link betweent two entity",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "childId",
+                        "description": "User id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "childType",
+                        "description": "Entity type = citoyens|organizations|projects|events.",
+                        "required": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "enum": [
+                            "citoyens",
+                            "organizations",
+                            "projects",
+                            "events"
+                        ],
+                        "type": "array"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "parentId",
+                        "description": "Entity id.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "parentType",
+                        "description": "Entity type = citoyens|organizations|projects|events.",
+                        "required": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "enum": [
+                            "citoyens",
+                            "organizations",
+                            "projects",
+                            "events"
+                        ],
+                        "type": "array"
+                    },
+                    {
+                        "name": "connectType",
+                        "in": "formData",
+                        "description": "Use case with connectType = \"member\",\"admin\", \"contributor\" or \"attendee\"",
+                        "items": {
+                            "type": "string"
+                        },
+                        "enum": [
+                            "member",
+                            "admin",
+                            "contributor",
+                            "attendee"
+                        ],
+                        "type": "array",
+                        "collectionFormat": "ssv",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of authenticate.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
                                 }
                             }
                         }

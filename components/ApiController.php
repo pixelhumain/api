@@ -32,17 +32,25 @@ class ApiController extends Controller
         "register"            => array("href" => "/ph/api/person/register"),
         'getuseridbymail'     => array("href" => "/ph/api/getuseridbymail"),
         "updatefield"         => array("href" => "/ph/api/person/updatefield"),
-      
-        
     ),
     "organization"=> array(
-        "get"                => array("href" => "/ph/api/organization/get", "public" => true),
+        "get"                   => array("href" => "/ph/api/organization/get", "public" => true),
+        "updatefield"           => array("href" => "/ph/api/organization/updatefield"),
+        'save'                  => array("href" => "/ph/api/organization/save"),
+        'disabled'              => array("href" => "/ph/api/organization/disabled"),
     ),
     "event"=> array(
         "get"                => array("href" => "/ph/api/event/get", "public" => true),
+        "updatefield"         => array("href" => "/ph/api/event/updatefield"),
     ),
     "project"=> array(
         "get"                => array("href" => "/ph/api/project/get", "public" => true),
+        "updatefield"         => array("href" => "/ph/api/project/updatefield"),
+    ),
+    "link"=> array(
+        'connect'            => array("href" => "/ph/api/link/connect", "public" => true),
+        'follow'             => array("href" => "/ph/api/link/follow", "public" => true),
+        'disconnect'         => array("href" => "/ph/api/link/disconnect", "public" => true),
     )
 
   );
