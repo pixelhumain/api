@@ -11,10 +11,16 @@ class OrganizationController extends ApiController {
           'get'                   => 'citizenToolKit.controllers.organization.GetAction',
           'save'                  => 'citizenToolKit.controllers.organization.SaveAction',
           'updatefield'           => 'citizenToolKit.controllers.organization.UpdateFieldAction',
-          'disabled'              => 'citizenToolKit.controllers.organization.DisableAction',
+          
+          // A faire dans swagger
+          'disabled'                    => 'citizenToolKit.controllers.organization.DisableAction',
+          'addneworganizationasmember'  => 'citizenToolKit.controllers.organization.AddNewOrganizationAsMemberAction',
+          'update'                      => 'citizenToolKit.controllers.organization.UpdateAction',
+          "updatesettings"              => 'citizenToolKit.controllers.organization.UpdateSettingsAction'
+
           /*'update'            => 'citizenToolKit.controllers.organization.UpdateAction',
           'join'              => 'citizenToolKit.controllers.organization.JoinAction',
-          'addneworganizationasmember'  => 'citizenToolKit.controllers.organization.AddNewOrganizationAsMemberAction',
+          
           'declaremeadmin'          => 'citizenToolKit.controllers.organization.DeclareMeAdminAction',
           "updatesettings"        => 'citizenToolKit.controllers.organization.UpdateSettingsAction'*/
 	    );

@@ -14,16 +14,15 @@ class LinkController extends CommunecterController {
 	}
 	public function actions()
 	{
-	    return array(
-	        /*'removemember'     	=> 'citizenToolKit.controllers.link.RemoveMemberAction',
-	        "removerole"		=> 'citizenToolKit.controllers.link.RemoveRoleAction',
-			'removecontributor' => 'citizenToolKit.controllers.link.RemoveContributorAction',
-			
-			'validate' 			=> 'citizenToolKit.controllers.link.ValidateAction',*/
-			//New Actions
-			
+	    return array(	
 			'follow' 			=> 'citizenToolKit.controllers.link.FollowAction',
 			'connect' 			=> 'citizenToolKit.controllers.link.ConnectAction',
+			'disconnect' 		=> 'citizenToolKit.controllers.link.DisconnectAction',
+
+			// a faire sur Swagger
+			'removemember'     	=> 'citizenToolKit.controllers.link.RemoveMemberAction',
+	        "removerole"		=> 'citizenToolKit.controllers.link.RemoveRoleAction',
+			'removecontributor' => 'citizenToolKit.controllers.link.RemoveContributorAction',
 			'disconnect' 		=> 'citizenToolKit.controllers.link.DisconnectAction',
 			
 	    );

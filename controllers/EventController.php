@@ -8,8 +8,16 @@ class EventController extends ApiController {
 
 	public function actions(){
 	    return array(
-          'get'                   => 'citizenToolKit.controllers.event.GetAction', 
-          'updatefield'           => 'citizenToolKit.controllers.event.UpdateFieldAction', 
+          'get'                   	=> 'citizenToolKit.controllers.event.GetAction',
+          'save'           		  	=> 'citizenToolKit.controllers.event.SaveAction', 
+          'updatefield'           	=> 'citizenToolKit.controllers.event.UpdateFieldAction', 
+
+          // A faire sur swagger
+          'update'                	=> 'citizenToolKit.controllers.event.UpdateAction',
+          'delete' 					=> 'citizenToolKit.controllers.event.DeleteAction',
+          'removeattendee'			=> 'citizenToolKit.controllers.event.RemoveAttendeeAction',
+          "updatesettings"        	=> 'citizenToolKit.controllers.event.UpdateSettingsAction'
+          //'getcalendar'               => 'citizenToolKit.controllers.event.GetCalendarAction',
 	    );
 	}
 }

@@ -4,13 +4,11 @@
 		'/plugins/swagger-ui/css/typography.css',
 	  '/plugins/swagger-ui/css/reset.css',
 	  '/plugins/swagger-ui/css/screen.css',
-	  '/plugins/swagger-ui/css/reset.css',
-	  '/plugins/swagger-ui/css/print.css',
+	  //'/plugins/swagger-ui/css/print.css',
 
-    /*'/plugins/swagger-ui/lib/jquery-1.8.0.min.js',
     '/plugins/swagger-ui/lib/jquery.slideto.min.js',
     '/plugins/swagger-ui/lib/jquery.wiggle.min.js',
-    '/plugins/swagger-ui/jquery.ba-bbq.min.js',*/
+    //'/plugins/swagger-ui/jquery.ba-bbq.min.js',
 
 
 	  '/plugins/swagger-ui/lib/handlebars-2.0.0.js',
@@ -64,19 +62,11 @@
     $url = $server.Yii::app()->createUrl("/api/data/get/");
 ?>
 <script type="text/javascript">
+
+	   var url = "<?php echo $url ; ?>"
 jQuery(document).ready(function() {
 
 
-
-});
-	   var baseUrl2 = "<?php echo $url ; ?>"
-    $(function () {
-      var url = window.location.search.match(/url=([^&]+)/);
-      if (url && url.length > 1) {
-        url = decodeURIComponent(url[1]);
-      } else {
-        url = baseUrl2;
-      }
 
       // Pre load translate...
       if(window.SwaggerTranslator) {
@@ -118,14 +108,7 @@ jQuery(document).ready(function() {
         showRequestHeaders: true
       });
 
-      function addApiKeyAuthorization(){
-        var key = encodeURIComponent($('#input_apiKey')[0].value);
-        if(key && key.trim() != "") {
-            var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("api_key", key, "query");
-            window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
-            log("added key " + key);
-        }
-      }
+      
 
       $('#input_apiKey').change(addApiKeyAuthorization);
 
@@ -137,11 +120,22 @@ jQuery(document).ready(function() {
 
       window.swaggerUi.load();
 
-      function log() {
+      
+  });
+
+function addApiKeyAuthorization(){
+        var key = encodeURIComponent($('#input_apiKey')[0].value);
+        if(key && key.trim() != "") {
+            var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("api_key", key, "query");
+            window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
+            log("added key " + key);
+        }
+      }
+
+function log() {
         if ('console' in window) {
           console.log.apply(console, arguments);
         }
       }
-  });
 
   </script>

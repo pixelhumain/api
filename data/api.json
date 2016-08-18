@@ -397,6 +397,125 @@
                 }
             }
         },
+        "/organization/save": {
+            "post": {
+                "tags": [
+                    "Organization"
+                ],
+                "description": "Create a organization.",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "organizationName",
+                        "description": "Name of organization",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "organizationEmail",
+                        "description": "Email of field.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "type",
+                        "description": "Use case with  \"NGO\" = Association, \"Group\" = Informel group,  \"LocalBusiness\" = entreprise \"GovernmentOrganization\" = Government Organization",
+                        "items": {
+                            "type": "string"
+                        },
+                        "enum": [
+                            "NGO",
+                            "Group",
+                            "LocalBusiness",
+                            "GovernmentOrganization"
+                        ],
+                        "type": "array",
+                        "collectionFormat": "ssv",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "streetAddress",
+                        "description": "number and name of street.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "postalCode",
+                        "description": "postal code, get postal code with 'city' .",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "cityName",
+                        "description": "Name of city, get name with api",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "city",
+                        "description": "Insee code of city",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "organizationCountry",
+                        "description": "Country of organization, get coutry with 'city'.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "geoPosLatitude",
+                        "description": "latitude of organization, get latitude with sig .",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "geoPosLongitude",
+                        "description": "latitude of organization, get latitude with sig .",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "role",
+                        "description": "Use case wit \"admin\", \"member\", \"creator\"",
+                        "items": {
+                            "type": "string"
+                        },
+                        "enum": [
+                            "admin",
+                            "member",
+                            "creator"
+                        ],
+                        "type": "array",
+                        "collectionFormat": "ssv",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of authenticate.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/event/get": {
             "get": {
                 "tags": [
@@ -437,6 +556,143 @@
                             "properties": {
                                 "data": {
                                     "$ref": "#/definitions/Event"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/event/save": {
+            "post": {
+                "tags": [
+                    "Event"
+                ],
+                "description": "Create a event.",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "name",
+                        "description": "Name of event",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "startDate",
+                        "description": "Start date of event. Format \"JJ/MM/AAAA HH:MM:SS\".",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "EndDate",
+                        "description": "End date of event. Format \"JJ/MM/AAAA HH:MM:SS\".",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "type",
+                        "description": "type event",
+                        "items": {
+                            "type": "string"
+                        },
+                        "enum": [
+                            "concert"
+                        ],
+                        "type": "array",
+                        "collectionFormat": "ssv",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "streetAddress",
+                        "description": "number and name of street.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "postalCode",
+                        "description": "postal code, get postal code with 'city' .",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "cityName",
+                        "description": "Name of city, get name with api",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "city",
+                        "description": "Insee code of city",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "organizationCountry",
+                        "description": "Country of organization, get coutry with 'city'.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "geoPosLatitude",
+                        "description": "latitude of organization, get latitude with sig .",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "geoPosLongitude",
+                        "description": "latitude of organization, get latitude with sig .",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "organizerType",
+                        "description": "Use case wit \"dontKnow\", \"citoyens\", \"organizations\"",
+                        "items": {
+                            "type": "string"
+                        },
+                        "enum": [
+                            "dontKnow",
+                            "citoyens",
+                            "organizations"
+                        ],
+                        "type": "array",
+                        "collectionFormat": "ssv",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "organizerId",
+                        "description": "id user or \"dontKnow\" .",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "allDay",
+                        "description": "If the event lasts all day.",
+                        "required": true,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of authenticate.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
                                 }
                             }
                         }
@@ -528,6 +784,115 @@
                             "properties": {
                                 "data": {
                                     "$ref": "#/definitions/Project"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/project/save": {
+            "post": {
+                "tags": [
+                    "Project"
+                ],
+                "description": "Create a project.",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "parentId",
+                        "description": "Id entity which create project",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "parentType",
+                        "description": "Use case wit \"citoyens\", \"organizations\", \"events\"",
+                        "items": {
+                            "type": "string"
+                        },
+                        "enum": [
+                            "citoyens",
+                            "organizations",
+                            "events"
+                        ],
+                        "type": "array",
+                        "collectionFormat": "ssv",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "name",
+                        "description": "Name of project",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "startDate",
+                        "description": "Start date of project. Format \"JJ/MM/AAAA HH:MM:SS\".",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "EndDate",
+                        "description": "End date of project. Format \"JJ/MM/AAAA HH:MM:SS\".",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "streetAddress",
+                        "description": "number and name of street.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "postalCode",
+                        "description": "postal code, get postal code with 'city' .",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "cityName",
+                        "description": "Name of city, get name with api",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "city",
+                        "description": "Insee code of city",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "geoPosLatitude",
+                        "description": "latitude of project, get latitude with sig .",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "geoPosLongitude",
+                        "description": "latitude of project, get latitude with sig .",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Result of authenticate.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/Result"
                                 }
                             }
                         }
