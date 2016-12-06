@@ -5,12 +5,9 @@
 	  '/plugins/swagger-ui/css/reset.css',
 	  '/plugins/swagger-ui/css/screen.css',
 	  //'/plugins/swagger-ui/css/print.css',
-
     '/plugins/swagger-ui/lib/jquery.slideto.min.js',
     '/plugins/swagger-ui/lib/jquery.wiggle.min.js',
     //'/plugins/swagger-ui/jquery.ba-bbq.min.js',
-
-
 	  '/plugins/swagger-ui/lib/handlebars-2.0.0.js',
 	  '/plugins/swagger-ui/lib/underscore-min.js',
 	  '/plugins/swagger-ui/lib/backbone-min.js',
