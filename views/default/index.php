@@ -42,8 +42,7 @@
   <script src='lib/swagger-oauth.js' type='text/javascript'></script>*/
 
 	);
-	//HtmlHelper::registerCssAndScriptsFiles( $cssAnsScriptFilesModule ,Yii::app()->theme->baseUrl."/assets");
-  HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule,Yii::app()->request->baseUrl);
+	HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule,Yii::app()->request->baseUrl);
 
 ?>
 <div id='header'>

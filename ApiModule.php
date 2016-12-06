@@ -21,7 +21,8 @@ class ApiModule extends CWebModule
 		));
 		
 		Yii::app()->homeUrl = Yii::app()->createUrl($this->id);
-		Yii::app()->theme  = "ph-dori";
+		Yii::app()->theme  = $this->getTheme();
+
 		Yii::app()->language = (isset(Yii::app()->session["lang"])) ? Yii::app()->session["lang"] : 'fr';
 		
 		// import the module-level models and components
@@ -52,5 +53,17 @@ class ApiModule extends CWebModule
 	        $this->_assetsUrl = Yii::app()->getAssetManager()->publish(
 	            Yii::getPathOfAlias($this->id.'.assets') );
 	    return $this->_assetsUrl;
+	}
+
+	public function getTheme() {
+		$theme = "ph-dori";
+		if (!empty(Yii::app()->params['theme'])) {
+			$theme = Yii::app()->params['theme'];
+		} else if (empty(Yii::app()->theme)) {
+			$theme = "ph-dori";
+		}
+
+		if(@$_GET["tpl"] == "iframesig"){ $theme = $_GET["tpl"]; }
+		return $theme;
 	}
 }
