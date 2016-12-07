@@ -24,7 +24,7 @@ class PersonController extends ApiController {
 	public function actions(){
 	    return array(
           'get'                   => 'citizenToolKit.controllers.person.GetAction', 
-	        'authenticate'          => 'citizenToolKit.controllers.person.AuthenticateAction',
+          'authenticate'          => 'citizenToolKit.controllers.person.AuthenticateAction',
           'changepassword'        => 'citizenToolKit.controllers.person.ChangePasswordAction',
           'register'              => 'citizenToolKit.controllers.person.RegisterAction',
           'getuseridbymail'       => 'citizenToolKit.controllers.person.GetUserIdByMailAction',

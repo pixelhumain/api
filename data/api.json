@@ -62,7 +62,7 @@
                                     "$ref": "#/definitions/meta"
                                 },
                                 "elements": {
-                                    "$ref": "#/definitions/person"
+                                    "$ref": "#/definitions/allPerson"
                                 }
                             }
                         }
@@ -109,7 +109,7 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "$ref": "#/definitions/organization"
+                                    "$ref": "#/definitions/allOrganization"
                                 }
                             }
                         }
@@ -156,7 +156,7 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "$ref": "#/definitions/event"
+                                    "$ref": "#/definitions/allEvent"
                                 }
                             }
                         }
@@ -203,7 +203,7 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "$ref": "#/definitions/project"
+                                    "$ref": "#/definitions/allProject"
                                 }
                             }
                         }
@@ -253,6 +253,27 @@
                 "previous": {
                     "type": "string",
                     "description": "L'url de la précédente list."
+                }
+            }
+        },
+        "allPerson": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "object",
+                    "properties": {
+                        "@type": {
+                            "type": "string",
+                            "description": "Type of element."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Name of user."
+                        },
+                        "url": {
+                            "$ref": "#/definitions/url"
+                        }
+                    }
                 }
             }
         },
@@ -375,6 +396,27 @@
                 }
             }
         },
+        "allOrganization": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "object",
+                    "properties": {
+                        "@type": {
+                            "type": "string",
+                            "description": "Type of element."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Name of user."
+                        },
+                        "url": {
+                            "$ref": "#/definitions/url"
+                        }
+                    }
+                }
+            }
+        },
         "organization": {
             "type": "object",
             "properties": {
@@ -409,6 +451,27 @@
                 }
             }
         },
+        "allEvent": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "object",
+                    "properties": {
+                        "@type": {
+                            "type": "string",
+                            "description": "Type of element."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Name of user."
+                        },
+                        "url": {
+                            "$ref": "#/definitions/url"
+                        }
+                    }
+                }
+            }
+        },
         "event": {
             "type": "object",
             "properties": {
@@ -438,6 +501,27 @@
                         "description": {
                             "type": "string",
                             "description": "Description of event"
+                        }
+                    }
+                }
+            }
+        },
+        "allProject": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "object",
+                    "properties": {
+                        "@type": {
+                            "type": "string",
+                            "description": "Type of element."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Name of user."
+                        },
+                        "url": {
+                            "$ref": "#/definitions/url"
                         }
                     }
                 }

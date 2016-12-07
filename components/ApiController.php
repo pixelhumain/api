@@ -26,7 +26,7 @@ class ApiController extends Controller
         "index"              => array("href" => "/ph/api/default/index", "public" => true),
     ),
     "person"=> array(
-        "get"                 => array("href" => "/ph/api/person/get", "public" => true),dev
+        "get"                 => array("href" => "/ph/api/person/get", "public" => true),
         //"authenticate"        => array("href" => "/ph/api/person/authenticate",'title' => "Authentication"),
         //'changepassword'      => array("href" => "/ph/api/person/changepassword"),
         //"register"            => array("href" => "/ph/api/person/register"),
