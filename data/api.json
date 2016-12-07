@@ -236,6 +236,27 @@
                     }
                 }
             }
+        },
+        "/city/get": {
+            "get": {
+                "tags": [
+                    "Cities"
+                ],
+                "description": "Get information about all cities.",
+                "responses": {
+                    "200": {
+                        "description": "The list of cities.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/cities"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -380,6 +401,22 @@
                         "maximum": 2
                     },
                     "description": "longitude and latitude of element."
+                }
+            }
+        },
+        "geoShape": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Type is Polygon."
+                },
+                "coordinates": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "description": "geoShape of element."
                 }
             }
         },
@@ -556,6 +593,96 @@
                         "description": {
                             "type": "string",
                             "description": "Description of project"
+                        }
+                    }
+                }
+            }
+        },
+        "urlCities": {
+            "type": "object",
+            "properties": {
+                "communecter": {
+                    "type": "string",
+                    "description": "url communecter."
+                },
+                "wikidata": {
+                    "type": "string",
+                    "description": "url wikidata."
+                },
+                "apiCitoyens": {
+                    "type": "string",
+                    "description": "url api all citoyen of cities."
+                },
+                "apiOrganizations": {
+                    "type": "string",
+                    "description": "url api all organizations of cities."
+                },
+                "apiProjects": {
+                    "type": "string",
+                    "description": "url api all projects of cities."
+                },
+                "apiEvents": {
+                    "type": "string",
+                    "description": "url api all events of cities."
+                }
+            }
+        },
+        "cities": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "object",
+                    "properties": {
+                        "@type": {
+                            "type": "string",
+                            "description": "Type of element."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Name of city."
+                        },
+                        "alternateName": {
+                            "type": "string",
+                            "description": "alternateName of city."
+                        },
+                        "insee": {
+                            "type": "string",
+                            "description": "code Insee of city."
+                        },
+                        "dep": {
+                            "type": "string",
+                            "description": "code dep."
+                        },
+                        "depName": {
+                            "type": "string",
+                            "description": "Name of departement."
+                        },
+                        "region": {
+                            "type": "string",
+                            "description": "code region."
+                        },
+                        "regionName": {
+                            "type": "string",
+                            "description": "Name of region."
+                        },
+                        "country": {
+                            "type": "string",
+                            "description": "country of city."
+                        },
+                        "url": {
+                            "$ref": "#/definitions/urlCities"
+                        },
+                        "postalCodes": {
+                            "$ref": "#/definitions/address"
+                        },
+                        "geo": {
+                            "$ref": "#/definitions/geo"
+                        },
+                        "geoPosition": {
+                            "$ref": "#/definitions/geoPosition"
+                        },
+                        "geoShape": {
+                            "$ref": "#/definitions/geoShape"
                         }
                     }
                 }
