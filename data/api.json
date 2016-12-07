@@ -43,6 +43,30 @@
             "description": "The project identifier string",
             "type": "string",
             "required": true
+        },
+        "insee": {
+            "name": "insee",
+            "in": "query",
+            "description": "Code Insee of element",
+            "type": "string"
+        },
+        "tags": {
+            "name": "tags",
+            "in": "query",
+            "description": "tags exemple (Education,Santé)",
+            "type": "string"
+        },
+        "limit": {
+            "name": "limit",
+            "in": "query",
+            "description": "Nombre d'élément à afficher ( min = 1 et max = 500)",
+            "type": "integer"
+        },
+        "index": {
+            "name": "index",
+            "in": "query",
+            "description": "index de l'element dans la list",
+            "type": "integer"
         }
     },
     "paths": {
@@ -50,6 +74,20 @@
             "get": {
                 "tags": [
                     "Person"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/insee"
+                    },
+                    {
+                        "$ref": "#/parameters/tags"
+                    },
+                    {
+                        "$ref": "#/parameters/limit"
+                    },
+                    {
+                        "$ref": "#/parameters/index"
+                    }
                 ],
                 "description": "Get information about all persons.",
                 "responses": {
@@ -101,6 +139,20 @@
                 "tags": [
                     "Organization"
                 ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/insee"
+                    },
+                    {
+                        "$ref": "#/parameters/tags"
+                    },
+                    {
+                        "$ref": "#/parameters/limit"
+                    },
+                    {
+                        "$ref": "#/parameters/index"
+                    }
+                ],
                 "description": "Get information about all organizations.",
                 "responses": {
                     "200": {
@@ -148,6 +200,20 @@
                 "tags": [
                     "Event"
                 ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/insee"
+                    },
+                    {
+                        "$ref": "#/parameters/tags"
+                    },
+                    {
+                        "$ref": "#/parameters/limit"
+                    },
+                    {
+                        "$ref": "#/parameters/index"
+                    }
+                ],
                 "description": "Get information about all events.",
                 "responses": {
                     "200": {
@@ -194,6 +260,20 @@
             "get": {
                 "tags": [
                     "Project"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/insee"
+                    },
+                    {
+                        "$ref": "#/parameters/tags"
+                    },
+                    {
+                        "$ref": "#/parameters/limit"
+                    },
+                    {
+                        "$ref": "#/parameters/index"
+                    }
                 ],
                 "description": "Get information about all projects.",
                 "responses": {
