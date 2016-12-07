@@ -58,8 +58,11 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Person"
+                                "meta": {
+                                    "$ref": "#/definitions/meta"
+                                },
+                                "elements": {
+                                    "$ref": "#/definitions/person"
                                 }
                             }
                         }
@@ -85,220 +88,7 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "$ref": "#/definitions/Person"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/person/authenticate": {
-            "post": {
-                "tags": [
-                    "Person"
-                ],
-                "description": "Authenticate.",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "email",
-                        "description": "Email of user",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "pwd",
-                        "description": "Password of user",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of authenticate.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/person/changepassword": {
-            "post": {
-                "tags": [
-                    "Person"
-                ],
-                "description": "Modify user password .",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "id",
-                        "description": "Id of user",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "mode",
-                        "description": "You have to put the mode in \"changePassword\"",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "newPassword",
-                        "description": "New password",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "oldPassword",
-                        "description": "Old password",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of changepassword.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/person/register": {
-            "post": {
-                "tags": [
-                    "Person"
-                ],
-                "description": "Sign in to Communecter .",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "name",
-                        "description": "User firstname and name",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "username",
-                        "description": "Username of user",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "email",
-                        "description": "User email",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "pwd",
-                        "description": "User password",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of changepassword.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/person/getuseridbymail": {
-            "post": {
-                "tags": [
-                    "Person"
-                ],
-                "description": "Get User Id by mail .",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "mail",
-                        "description": "User mail",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/person/updatefield": {
-            "post": {
-                "tags": [
-                    "Person"
-                ],
-                "description": "Update field of the user .",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "id",
-                        "description": "Id of user",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "name",
-                        "description": "The name of field.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "value",
-                        "description": "The value of field.",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of authenticate.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
+                                    "$ref": "#/definitions/person"
                                 }
                             }
                         }
@@ -319,7 +109,7 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "$ref": "#/definitions/Organization"
+                                    "$ref": "#/definitions/organization"
                                 }
                             }
                         }
@@ -345,170 +135,7 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "$ref": "#/definitions/Organization"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/organization/updatefield": {
-            "post": {
-                "tags": [
-                    "Organization"
-                ],
-                "description": "Update field of the organization .",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "id",
-                        "description": "Id of organization",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "name",
-                        "description": "The name of field.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "value",
-                        "description": "The value of field.",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of authenticate.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/organization/save": {
-            "post": {
-                "tags": [
-                    "Organization"
-                ],
-                "description": "Create a organization.",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "organizationName",
-                        "description": "Name of organization",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "organizationEmail",
-                        "description": "Email of field.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "type",
-                        "description": "Use case with  \"NGO\" = Association, \"Group\" = Informel group,  \"LocalBusiness\" = entreprise \"GovernmentOrganization\" = Government Organization",
-                        "items": {
-                            "type": "string"
-                        },
-                        "enum": [
-                            "NGO",
-                            "Group",
-                            "LocalBusiness",
-                            "GovernmentOrganization"
-                        ],
-                        "type": "array",
-                        "collectionFormat": "ssv",
-                        "required": true
-                    },
-                    {
-                        "in": "formData",
-                        "name": "streetAddress",
-                        "description": "number and name of street.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "postalCode",
-                        "description": "postal code, get postal code with 'city' .",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "cityName",
-                        "description": "Name of city, get name with api",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "city",
-                        "description": "Insee code of city",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "organizationCountry",
-                        "description": "Country of organization, get coutry with 'city'.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "geoPosLatitude",
-                        "description": "latitude of organization, get latitude with sig .",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "geoPosLongitude",
-                        "description": "latitude of organization, get latitude with sig .",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "role",
-                        "description": "Use case wit \"admin\", \"member\", \"creator\"",
-                        "items": {
-                            "type": "string"
-                        },
-                        "enum": [
-                            "admin",
-                            "member",
-                            "creator"
-                        ],
-                        "type": "array",
-                        "collectionFormat": "ssv",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of authenticate.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
+                                    "$ref": "#/definitions/organization"
                                 }
                             }
                         }
@@ -529,7 +156,7 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "$ref": "#/definitions/Event"
+                                    "$ref": "#/definitions/event"
                                 }
                             }
                         }
@@ -555,188 +182,7 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "$ref": "#/definitions/Event"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/event/save": {
-            "post": {
-                "tags": [
-                    "Event"
-                ],
-                "description": "Create a event.",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "name",
-                        "description": "Name of event",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "startDate",
-                        "description": "Start date of event. Format \"JJ/MM/AAAA HH:MM:SS\".",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "EndDate",
-                        "description": "End date of event. Format \"JJ/MM/AAAA HH:MM:SS\".",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "type",
-                        "description": "type event",
-                        "items": {
-                            "type": "string"
-                        },
-                        "enum": [
-                            "concert"
-                        ],
-                        "type": "array",
-                        "collectionFormat": "ssv",
-                        "required": true
-                    },
-                    {
-                        "in": "formData",
-                        "name": "streetAddress",
-                        "description": "number and name of street.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "postalCode",
-                        "description": "postal code, get postal code with 'city' .",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "cityName",
-                        "description": "Name of city, get name with api",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "city",
-                        "description": "Insee code of city",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "organizationCountry",
-                        "description": "Country of organization, get coutry with 'city'.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "geoPosLatitude",
-                        "description": "latitude of organization, get latitude with sig .",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "geoPosLongitude",
-                        "description": "latitude of organization, get latitude with sig .",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "organizerType",
-                        "description": "Use case wit \"dontKnow\", \"citoyens\", \"organizations\"",
-                        "items": {
-                            "type": "string"
-                        },
-                        "enum": [
-                            "dontKnow",
-                            "citoyens",
-                            "organizations"
-                        ],
-                        "type": "array",
-                        "collectionFormat": "ssv",
-                        "required": true
-                    },
-                    {
-                        "in": "formData",
-                        "name": "organizerId",
-                        "description": "id user or \"dontKnow\" .",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "allDay",
-                        "description": "If the event lasts all day.",
-                        "required": true,
-                        "type": "boolean"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of authenticate.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/event/updatefield": {
-            "post": {
-                "tags": [
-                    "Event"
-                ],
-                "description": "Update field of the event .",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "id",
-                        "description": "Id of event",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "name",
-                        "description": "The name of field.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "value",
-                        "description": "The value of field.",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of authenticate.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
+                                    "$ref": "#/definitions/event"
                                 }
                             }
                         }
@@ -757,7 +203,7 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "$ref": "#/definitions/Project"
+                                    "$ref": "#/definitions/project"
                                 }
                             }
                         }
@@ -783,355 +229,7 @@
                             "type": "object",
                             "properties": {
                                 "data": {
-                                    "$ref": "#/definitions/Project"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/project/save": {
-            "post": {
-                "tags": [
-                    "Project"
-                ],
-                "description": "Create a project.",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "parentId",
-                        "description": "Id entity which create project",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "parentType",
-                        "description": "Use case wit \"citoyens\", \"organizations\", \"events\"",
-                        "items": {
-                            "type": "string"
-                        },
-                        "enum": [
-                            "citoyens",
-                            "organizations",
-                            "events"
-                        ],
-                        "type": "array",
-                        "collectionFormat": "ssv",
-                        "required": true
-                    },
-                    {
-                        "in": "formData",
-                        "name": "name",
-                        "description": "Name of project",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "startDate",
-                        "description": "Start date of project. Format \"JJ/MM/AAAA HH:MM:SS\".",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "EndDate",
-                        "description": "End date of project. Format \"JJ/MM/AAAA HH:MM:SS\".",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "streetAddress",
-                        "description": "number and name of street.",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "postalCode",
-                        "description": "postal code, get postal code with 'city' .",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "cityName",
-                        "description": "Name of city, get name with api",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "city",
-                        "description": "Insee code of city",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "geoPosLatitude",
-                        "description": "latitude of project, get latitude with sig .",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "geoPosLongitude",
-                        "description": "latitude of project, get latitude with sig .",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of authenticate.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/project/updatefield": {
-            "post": {
-                "tags": [
-                    "Project"
-                ],
-                "description": "Update field of the project .",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "id",
-                        "description": "Id of project",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "name",
-                        "description": "The name of field.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "value",
-                        "description": "The value of field.",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of authenticate.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/link/follow": {
-            "post": {
-                "tags": [
-                    "Link"
-                ],
-                "description": "Follow a entity (Person|Organization|Project) .",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "childId",
-                        "description": "User id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "childType",
-                        "description": "User Type = \"citoyens\"",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "parentId",
-                        "description": "Entity id.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "parentType",
-                        "description": "Entity type = citoyens|organizations|projects.",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of authenticate.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/link/connect": {
-            "post": {
-                "tags": [
-                    "Link"
-                ],
-                "description": "Connect a entity (child)  with other entity (parent). Entity = ( 'Person' | 'Organization' | 'Project '| 'Event' )",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "childId",
-                        "description": "User id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "childType",
-                        "description": "Entity type = citoyens|organizations|projects|events.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "parentId",
-                        "description": "Entity id.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "parentType",
-                        "description": "Entity type = citoyens|organizations|projects|events.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "connectType",
-                        "description": "Use case with connectType = \"member\",\"admin\", \"contributor\" or \"attendee\" .",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of authenticate.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/link/disconnect": {
-            "post": {
-                "tags": [
-                    "Link"
-                ],
-                "description": "Remove link betweent two entity",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "childId",
-                        "description": "User id",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "childType",
-                        "description": "Entity type = citoyens|organizations|projects|events.",
-                        "required": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "enum": [
-                            "citoyens",
-                            "organizations",
-                            "projects",
-                            "events"
-                        ],
-                        "type": "array"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "parentId",
-                        "description": "Entity id.",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "parentType",
-                        "description": "Entity type = citoyens|organizations|projects|events.",
-                        "required": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "enum": [
-                            "citoyens",
-                            "organizations",
-                            "projects",
-                            "events"
-                        ],
-                        "type": "array"
-                    },
-                    {
-                        "name": "connectType",
-                        "in": "formData",
-                        "description": "Use case with connectType = \"member\",\"admin\", \"contributor\" or \"attendee\"",
-                        "items": {
-                            "type": "string"
-                        },
-                        "enum": [
-                            "member",
-                            "admin",
-                            "contributor",
-                            "attendee"
-                        ],
-                        "type": "array",
-                        "collectionFormat": "ssv",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Result of authenticate.",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "data": {
-                                    "$ref": "#/definitions/Result"
+                                    "$ref": "#/definitions/project"
                                 }
                             }
                         }
@@ -1141,88 +239,245 @@
         }
     },
     "definitions": {
-        "Person": {
+        "meta": {
+            "type": "object",
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "description": "Number of element in the list."
+                },
+                "next": {
+                    "type": "string",
+                    "description": "L'url de la suite de la list."
+                },
+                "previous": {
+                    "type": "string",
+                    "description": "L'url de la précédente list."
+                }
+            }
+        },
+        "person": {
             "type": "object",
             "properties": {
                 "id": {
-                    "type": "string",
-                    "description": "Unique identifier representing a specific organization"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name of user."
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Description of organization."
+                    "type": "object",
+                    "properties": {
+                        "@type": {
+                            "type": "string",
+                            "description": "Type of element."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Name of user."
+                        },
+                        "url": {
+                            "$ref": "#/definitions/url"
+                        },
+                        "address": {
+                            "$ref": "#/definitions/address"
+                        },
+                        "geo": {
+                            "$ref": "#/definitions/geo"
+                        },
+                        "geoPosition": {
+                            "$ref": "#/definitions/geoPosition"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "Description of user"
+                        }
+                    }
                 }
             }
         },
-        "Organization": {
+        "address": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "description": "Type is PostalAddress."
+                },
+                "streetAddress": {
+                    "type": "string",
+                    "description": "streetAddress of element."
+                },
+                "postalCode": {
+                    "type": "string",
+                    "description": "postalCode of element"
+                },
+                "addressLocality": {
+                    "type": "string",
+                    "description": "addressLocality of element."
+                },
+                "codeInsee": {
+                    "type": "string",
+                    "description": "codeInsee of element"
+                },
+                "addressCountry": {
+                    "type": "string",
+                    "description": "addressCountry of element"
+                },
+                "depName": {
+                    "type": "string",
+                    "description": "depName of element."
+                },
+                "regionName": {
+                    "type": "string",
+                    "description": "regionName of element"
+                }
+            }
+        },
+        "geo": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "description": "Type is GeoCoordinates."
+                },
+                "latitude": {
+                    "type": "string",
+                    "description": "latitude of element."
+                },
+                "longitude": {
+                    "type": "string",
+                    "description": "longitude of element"
+                }
+            }
+        },
+        "geoPosition": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "description": "Type is Point."
+                },
+                "coordinates": {
+                    "type": "array",
+                    "items": {
+                        "type": "number",
+                        "minimum": 2,
+                        "maximum": 2
+                    },
+                    "description": "longitude and latitude of element."
+                }
+            }
+        },
+        "url": {
+            "type": "object",
+            "properties": {
+                "communecter": {
+                    "type": "string",
+                    "description": "url communecter."
+                },
+                "api": {
+                    "type": "string",
+                    "description": "url api."
+                }
+            }
+        },
+        "organization": {
             "type": "object",
             "properties": {
                 "id": {
-                    "type": "string",
-                    "description": "Unique identifier representing a specific person"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name of user."
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Description of user."
+                    "type": "object",
+                    "properties": {
+                        "@type": {
+                            "type": "string",
+                            "description": "Type of element."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Name of organization."
+                        },
+                        "url": {
+                            "$ref": "#/definitions/url"
+                        },
+                        "address": {
+                            "$ref": "#/definitions/address"
+                        },
+                        "geo": {
+                            "$ref": "#/definitions/geo"
+                        },
+                        "geoPosition": {
+                            "$ref": "#/definitions/geoPosition"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "Description of organization"
+                        }
+                    }
                 }
             }
         },
-        "Event": {
+        "event": {
             "type": "object",
             "properties": {
                 "id": {
-                    "type": "string",
-                    "description": "Unique identifier representing a specific event"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name of user."
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Description of event."
+                    "type": "object",
+                    "properties": {
+                        "@type": {
+                            "type": "string",
+                            "description": "Type of element."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Name of event."
+                        },
+                        "url": {
+                            "$ref": "#/definitions/url"
+                        },
+                        "address": {
+                            "$ref": "#/definitions/address"
+                        },
+                        "geo": {
+                            "$ref": "#/definitions/geo"
+                        },
+                        "geoPosition": {
+                            "$ref": "#/definitions/geoPosition"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "Description of event"
+                        }
+                    }
                 }
             }
         },
-        "Project": {
+        "project": {
             "type": "object",
             "properties": {
                 "id": {
-                    "type": "string",
-                    "description": "Unique identifier representing a specific project"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "Name of user."
-                },
-                "description": {
-                    "type": "string",
-                    "description": "Description of project."
+                    "type": "object",
+                    "properties": {
+                        "@type": {
+                            "type": "string",
+                            "description": "Type of element."
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Name of project."
+                        },
+                        "url": {
+                            "$ref": "#/definitions/url"
+                        },
+                        "address": {
+                            "$ref": "#/definitions/address"
+                        },
+                        "geo": {
+                            "$ref": "#/definitions/geo"
+                        },
+                        "geoPosition": {
+                            "$ref": "#/definitions/geoPosition"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "Description of project"
+                        }
+                    }
                 }
             }
         },
-        "Result": {
-            "type": "object",
-            "properties": {
-                "result": {
-                    "type": "boolean",
-                    "description": "Boolean"
-                },
-                "msg": {
-                    "type": "string",
-                    "description": "Message return."
-                }
-            }
-        },
-        "Error": {
+        "error": {
             "type": "object",
             "properties": {
                 "code": {
