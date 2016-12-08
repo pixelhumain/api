@@ -47,25 +47,25 @@
         "insee": {
             "name": "insee",
             "in": "query",
-            "description": "Code Insee of element",
+            "description": "Insee code of element",
             "type": "string"
         },
         "tags": {
             "name": "tags",
             "in": "query",
-            "description": "tags exemple (Education,Santé)",
+            "description": "Search items relative to their tags To put multiple tags, separate them with a comma  (Education, Health, ...) .",
             "type": "string"
         },
         "limit": {
             "name": "limit",
             "in": "query",
-            "description": "Nombre d'élément à afficher ( min = 1 et max = 500)",
+            "description": "Number of items to display (min = 1 and max = 500)",
             "type": "integer"
         },
         "index": {
             "name": "index",
             "in": "query",
-            "description": "index de l'element dans la list",
+            "description": "Index of the item in the list",
             "type": "integer"
         }
     },
