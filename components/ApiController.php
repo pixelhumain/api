@@ -6,7 +6,7 @@
 class ApiController extends Controller
 {
   public $version = "v0.1.1";
-  public $versionDate = "10/08/2016 10:45";
+  public $versionDate = "12/01/2017 15:00";
   public $title = "API Communecter";
   public $subTitle = "se connecter à sa commune";
   public $pageTitle = "API Communecter, se connecter à sa commune";
@@ -101,6 +101,10 @@ class ApiController extends Controller
       'cityexists'              => array("href" => "/ph/api/city/cityexists"),
       'autocompletemultiscope'  => array("href" => "/ph/api/city/autocompletemultiscope"),*/
     ),
+
+    "tool"=> array(
+      'datetime'                => array("href" => "/ph/api/tool/datetime", "public" => true),
+      ),
 
   );
 
