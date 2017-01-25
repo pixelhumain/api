@@ -67,6 +67,12 @@
             "in": "query",
             "description": "Index of the item in the list",
             "type": "integer"
+        },
+        "geoShape": {
+            "name": "geoShape",
+            "in": "query",
+            "description": "Get geoShape of city [ 0 | 1 ]",
+            "type": "integer"
         }
     },
     "paths": {
@@ -321,6 +327,14 @@
             "get": {
                 "tags": [
                     "Cities"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/insee"
+                    },
+                    {
+                        "$ref": "#/parameters/geoShape"
+                    }
                 ],
                 "description": "Get information about all cities.",
                 "responses": {
