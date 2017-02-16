@@ -6,7 +6,7 @@
 class ApiController extends Controller
 {
   public $version = "v0.1.1";
-  public $versionDate = "10/08/2016 10:45";
+  public $versionDate = "12/01/2017 15:00";
   public $title = "API Communecter";
   public $subTitle = "se connecter à sa commune";
   public $pageTitle = "API Communecter, se connecter à sa commune";
@@ -103,8 +103,8 @@ class ApiController extends Controller
     ),
     "tool"=> array(
       'get'             => array("href" => "/ph/api/tool/get", "public" => true),
-      
-    ),
+      'datetime'                => array("href" => "/ph/api/tool/datetime", "public" => true),
+      ),
   );
 
   function initPage(){
