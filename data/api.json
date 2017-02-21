@@ -10,10 +10,12 @@
         "https"
     ],
     "consumes": [
-        "application/json"
+        "application/json",
+        "application/xml"
     ],
     "produces": [
-        "application/json"
+        "application/json",
+        "application/xml"
     ],
     "parameters": {
         "person-id": {
@@ -50,10 +52,29 @@
             "description": "Code Insee of element",
             "type": "string"
         },
+        "idElement": {
+            "name": "idElement",
+            "in": "query",
+            "description": "Id of the element",
+            "type": "string"
+        },
+        "typeElement": {
+            "name": "typeElement",
+            "in": "query",
+            "description": "Type of the element (ex: citoyens or organization)",
+            "type": "string",
+            "required": true
+        },
         "tags": {
             "name": "tags",
             "in": "query",
             "description": "tags exemple (Education,Santé)",
+            "type": "string"
+        },
+        "multiTags": {
+            "name": "multiTags",
+            "in": "query",
+            "description": "Operator AND if MultiTags = true, Operator OR else",
             "type": "string"
         },
         "limit": {
@@ -96,10 +117,7 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "meta": {
-                                    "$ref": "#/definitions/meta"
-                                },
-                                "elements": {
+                                "data": {
                                     "$ref": "#/definitions/allPerson"
                                 }
                             }
@@ -337,6 +355,70 @@
                     }
                 }
             }
+        },
+        "/news/get": {
+            "get": {
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/tags"
+                    },
+                    {
+                        "$ref": "#/parameters/multiTags"
+                    }
+                ],
+                "tags": [
+                    "News"
+                ],
+                "summary": "Test",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/definitions/News"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/news/get/typeElement/{typeElement}/idElement/{idElement}": {
+            "get": {
+                "tags": [
+                    "News"
+                ],
+                "summary": "Get all the news of an element",
+                "parameters": [
+                    {
+                        "name": "idElement",
+                        "in": "path",
+                        "required": true,
+                        "description": "type of the element",
+                        "type": "string"
+                    },
+                    {
+                        "name": "typeElement",
+                        "in": "path",
+                        "required": true,
+                        "description": "id of the element",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/News"
+                        }
+                    },
+                    "404": {
+                        "description": "Missing the ID of the Element and/or the TYPE of the element"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -360,19 +442,27 @@
         "allPerson": {
             "type": "object",
             "properties": {
-                "id": {
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                },
+                "entities": {
                     "type": "object",
                     "properties": {
-                        "@type": {
-                            "type": "string",
-                            "description": "Type of element."
-                        },
-                        "name": {
-                            "type": "string",
-                            "description": "Name of user."
-                        },
-                        "url": {
-                            "$ref": "#/definitions/url"
+                        "id": {
+                            "type": "object",
+                            "properties": {
+                                "@type": {
+                                    "type": "string",
+                                    "description": "Type of element."
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "Name of user."
+                                },
+                                "url": {
+                                    "$ref": "#/definitions/url"
+                                }
+                            }
                         }
                     }
                 }
@@ -381,32 +471,40 @@
         "person": {
             "type": "object",
             "properties": {
-                "id": {
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                },
+                "entities": {
                     "type": "object",
                     "properties": {
-                        "@type": {
-                            "type": "string",
-                            "description": "Type of element."
-                        },
-                        "name": {
-                            "type": "string",
-                            "description": "Name of user."
-                        },
-                        "url": {
-                            "$ref": "#/definitions/url"
-                        },
-                        "address": {
-                            "$ref": "#/definitions/address"
-                        },
-                        "geo": {
-                            "$ref": "#/definitions/geo"
-                        },
-                        "geoPosition": {
-                            "$ref": "#/definitions/geoPosition"
-                        },
-                        "description": {
-                            "type": "string",
-                            "description": "Description of user"
+                        "id": {
+                            "type": "object",
+                            "properties": {
+                                "@type": {
+                                    "type": "string",
+                                    "description": "Type of element."
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "Name of user."
+                                },
+                                "url": {
+                                    "$ref": "#/definitions/url"
+                                },
+                                "address": {
+                                    "$ref": "#/definitions/address"
+                                },
+                                "geo": {
+                                    "$ref": "#/definitions/geo"
+                                },
+                                "geoPosition": {
+                                    "$ref": "#/definitions/geoPosition"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "Description of user"
+                                }
+                            }
                         }
                     }
                 }
@@ -516,19 +614,31 @@
         "allOrganization": {
             "type": "object",
             "properties": {
-                "id": {
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                },
+                "entities": {
                     "type": "object",
                     "properties": {
-                        "@type": {
-                            "type": "string",
-                            "description": "Type of element."
-                        },
-                        "name": {
-                            "type": "string",
-                            "description": "Name of user."
-                        },
-                        "url": {
-                            "$ref": "#/definitions/url"
+                        "id": {
+                            "type": "object",
+                            "properties": {
+                                "@type": {
+                                    "type": "string",
+                                    "description": "Type of element."
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "Name of user."
+                                },
+                                "typeCommunecter": {
+                                    "type": "string",
+                                    "description": "Type of the element for Communecter"
+                                },
+                                "url": {
+                                    "$ref": "#/definitions/url"
+                                }
+                            }
                         }
                     }
                 }
@@ -537,32 +647,83 @@
         "organization": {
             "type": "object",
             "properties": {
-                "id": {
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                },
+                "entities": {
                     "type": "object",
                     "properties": {
-                        "@type": {
-                            "type": "string",
-                            "description": "Type of element."
-                        },
-                        "name": {
-                            "type": "string",
-                            "description": "Name of organization."
-                        },
-                        "url": {
-                            "$ref": "#/definitions/url"
-                        },
-                        "address": {
-                            "$ref": "#/definitions/address"
-                        },
-                        "geo": {
-                            "$ref": "#/definitions/geo"
-                        },
-                        "geoPosition": {
-                            "$ref": "#/definitions/geoPosition"
-                        },
-                        "description": {
-                            "type": "string",
-                            "description": "Description of organization"
+                        "id": {
+                            "type": "object",
+                            "properties": {
+                                "@type": {
+                                    "type": "string",
+                                    "description": "Type of element."
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "Name of organization."
+                                },
+                                "url": {
+                                    "$ref": "#/definitions/url"
+                                },
+                                "address": {
+                                    "$ref": "#/definitions/address"
+                                },
+                                "geo": {
+                                    "$ref": "#/definitions/geo"
+                                },
+                                "geoPosition": {
+                                    "$ref": "#/definitions/geoPosition"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "Description of organization"
+                                },
+                                "links": {
+                                    "type": "object",
+                                    "properties": {
+                                        "members": {
+                                            "type": "object",
+                                            "properties": {
+                                                "num_member": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "type": {
+                                                            "type": "string"
+                                                        },
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "url": {
+                                                            "$ref": "#/definitions/url"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "events": {
+                                            "type": "object",
+                                            "properties": {
+                                                "num_event": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "type": {
+                                                            "type": "string"
+                                                        },
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "url": {
+                                                            "$ref": "#/definitions/url"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -571,19 +732,27 @@
         "allEvent": {
             "type": "object",
             "properties": {
-                "id": {
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                },
+                "entities": {
                     "type": "object",
                     "properties": {
-                        "@type": {
-                            "type": "string",
-                            "description": "Type of element."
-                        },
-                        "name": {
-                            "type": "string",
-                            "description": "Name of user."
-                        },
-                        "url": {
-                            "$ref": "#/definitions/url"
+                        "id": {
+                            "type": "object",
+                            "properties": {
+                                "@type": {
+                                    "type": "string",
+                                    "description": "Type of element."
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "Name of user."
+                                },
+                                "url": {
+                                    "$ref": "#/definitions/url"
+                                }
+                            }
                         }
                     }
                 }
@@ -592,32 +761,62 @@
         "event": {
             "type": "object",
             "properties": {
-                "id": {
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                },
+                "entities": {
                     "type": "object",
                     "properties": {
-                        "@type": {
-                            "type": "string",
-                            "description": "Type of element."
-                        },
-                        "name": {
-                            "type": "string",
-                            "description": "Name of event."
-                        },
-                        "url": {
-                            "$ref": "#/definitions/url"
-                        },
-                        "address": {
-                            "$ref": "#/definitions/address"
-                        },
-                        "geo": {
-                            "$ref": "#/definitions/geo"
-                        },
-                        "geoPosition": {
-                            "$ref": "#/definitions/geoPosition"
-                        },
-                        "description": {
-                            "type": "string",
-                            "description": "Description of event"
+                        "id": {
+                            "type": "object",
+                            "properties": {
+                                "@type": {
+                                    "type": "string",
+                                    "description": "Type of element."
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "Name of event."
+                                },
+                                "url": {
+                                    "$ref": "#/definitions/url"
+                                },
+                                "address": {
+                                    "$ref": "#/definitions/address"
+                                },
+                                "geo": {
+                                    "$ref": "#/definitions/geo"
+                                },
+                                "geoPosition": {
+                                    "$ref": "#/definitions/geoPosition"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "Description of event"
+                                },
+                                "startDate": {
+                                    "type": "object",
+                                    "properties": {
+                                        "sec": {
+                                            "type": "integer"
+                                        },
+                                        "usec": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "endDate": {
+                                    "type": "object",
+                                    "properties": {
+                                        "sec": {
+                                            "type": "integer"
+                                        },
+                                        "usec": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -626,19 +825,27 @@
         "allProject": {
             "type": "object",
             "properties": {
-                "id": {
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                },
+                "entities": {
                     "type": "object",
                     "properties": {
-                        "@type": {
-                            "type": "string",
-                            "description": "Type of element."
-                        },
-                        "name": {
-                            "type": "string",
-                            "description": "Name of user."
-                        },
-                        "url": {
-                            "$ref": "#/definitions/url"
+                        "id": {
+                            "type": "object",
+                            "properties": {
+                                "@type": {
+                                    "type": "string",
+                                    "description": "Type of element."
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "Name of user."
+                                },
+                                "url": {
+                                    "$ref": "#/definitions/url"
+                                }
+                            }
                         }
                     }
                 }
@@ -647,32 +854,40 @@
         "project": {
             "type": "object",
             "properties": {
-                "id": {
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                },
+                "entities": {
                     "type": "object",
                     "properties": {
-                        "@type": {
-                            "type": "string",
-                            "description": "Type of element."
-                        },
-                        "name": {
-                            "type": "string",
-                            "description": "Name of project."
-                        },
-                        "url": {
-                            "$ref": "#/definitions/url"
-                        },
-                        "address": {
-                            "$ref": "#/definitions/address"
-                        },
-                        "geo": {
-                            "$ref": "#/definitions/geo"
-                        },
-                        "geoPosition": {
-                            "$ref": "#/definitions/geoPosition"
-                        },
-                        "description": {
-                            "type": "string",
-                            "description": "Description of project"
+                        "id": {
+                            "type": "object",
+                            "properties": {
+                                "@type": {
+                                    "type": "string",
+                                    "description": "Type of element."
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "Name of project."
+                                },
+                                "url": {
+                                    "$ref": "#/definitions/url"
+                                },
+                                "address": {
+                                    "$ref": "#/definitions/address"
+                                },
+                                "geo": {
+                                    "$ref": "#/definitions/geo"
+                                },
+                                "geoPosition": {
+                                    "$ref": "#/definitions/geoPosition"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "Description of project"
+                                }
+                            }
                         }
                     }
                 }
@@ -710,61 +925,129 @@
         "cities": {
             "type": "object",
             "properties": {
-                "id": {
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                },
+                "entities": {
                     "type": "object",
                     "properties": {
-                        "@type": {
-                            "type": "string",
-                            "description": "Type of element."
-                        },
-                        "name": {
-                            "type": "string",
-                            "description": "Name of city."
-                        },
-                        "alternateName": {
-                            "type": "string",
-                            "description": "alternateName of city."
-                        },
-                        "insee": {
-                            "type": "string",
-                            "description": "code Insee of city."
-                        },
-                        "dep": {
-                            "type": "string",
-                            "description": "code dep."
-                        },
-                        "depName": {
-                            "type": "string",
-                            "description": "Name of departement."
-                        },
-                        "region": {
-                            "type": "string",
-                            "description": "code region."
-                        },
-                        "regionName": {
-                            "type": "string",
-                            "description": "Name of region."
-                        },
-                        "country": {
-                            "type": "string",
-                            "description": "country of city."
-                        },
-                        "url": {
-                            "$ref": "#/definitions/urlCities"
-                        },
-                        "postalCodes": {
-                            "$ref": "#/definitions/address"
-                        },
-                        "geo": {
-                            "$ref": "#/definitions/geo"
-                        },
-                        "geoPosition": {
-                            "$ref": "#/definitions/geoPosition"
-                        },
-                        "geoShape": {
-                            "$ref": "#/definitions/geoShape"
+                        "entities": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "object",
+                                    "properties": {
+                                        "@type": {
+                                            "type": "string",
+                                            "description": "Type of element."
+                                        },
+                                        "@id": {
+                                            "$ref": "#/definitions/url"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "description": "Name of city."
+                                        },
+                                        "alternateName": {
+                                            "type": "string",
+                                            "description": "alternateName of city."
+                                        },
+                                        "insee": {
+                                            "type": "string",
+                                            "description": "code Insee of city."
+                                        },
+                                        "dep": {
+                                            "type": "string",
+                                            "description": "code dep."
+                                        },
+                                        "depName": {
+                                            "type": "string",
+                                            "description": "Name of departement."
+                                        },
+                                        "region": {
+                                            "type": "string",
+                                            "description": "code region."
+                                        },
+                                        "regionName": {
+                                            "type": "string",
+                                            "description": "Name of region."
+                                        },
+                                        "country": {
+                                            "type": "string",
+                                            "description": "country of city."
+                                        },
+                                        "url": {
+                                            "$ref": "#/definitions/urlCities"
+                                        },
+                                        "postalCodes": {
+                                            "$ref": "#/definitions/address"
+                                        },
+                                        "geo": {
+                                            "$ref": "#/definitions/geo"
+                                        },
+                                        "geoPosition": {
+                                            "$ref": "#/definitions/geoPosition"
+                                        },
+                                        "geoShape": {
+                                            "$ref": "#/definitions/geoShape"
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
+                }
+            }
+        },
+        "News": {
+            "type": "object",
+            "properties": {
+                "meta": {
+                    "$ref": "#/definitions/meta"
+                },
+                "entities": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "object",
+                            "properties": {
+                                "@type": {
+                                    "type": "string",
+                                    "description": "Type of the element"
+                                },
+                                "text": {
+                                    "type": "string",
+                                    "description": "Text of the news if news is a message"
+                                },
+                                "scope": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "$ref": "#/definitions/url"
+                                        }
+                                    }
+                                },
+                                "author": {
+                                    "type": "string",
+                                    "description": "Url vers la page personnel de l'auteur"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "NewsById": {
+            "required": [
+                "idElement",
+                "typeElement"
+            ],
+            "properties": {
+                "idElement": {
+                    "type": "string"
+                },
+                "typeElement": {
+                    "type": "string"
                 }
             }
         },
