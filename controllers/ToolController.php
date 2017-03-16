@@ -1,4 +1,5 @@
 <?php
+
 /**
 * Created on examples of other controllers 
 * api tool datetime for update rtctime of Smart-Citizen-Kit 
@@ -15,7 +16,7 @@ class ToolController extends ApiController {
 
   	public function actions(){
 	    return array(
-          
+          'get'                   	=> 'citizenToolKit.controllers.tool.GetAction',
           'datetime'                   	=> 'citizenToolKit.controllers.tool.DateTimeAction'
           
         );

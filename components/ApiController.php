@@ -101,11 +101,10 @@ class ApiController extends Controller
       'cityexists'              => array("href" => "/ph/api/city/cityexists"),
       'autocompletemultiscope'  => array("href" => "/ph/api/city/autocompletemultiscope"),*/
     ),
-
     "tool"=> array(
+      'get'             => array("href" => "/ph/api/tool/get", "public" => true),
       'datetime'                => array("href" => "/ph/api/tool/datetime", "public" => true),
       ),
-
   );
 
   function initPage(){
