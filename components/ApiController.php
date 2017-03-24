@@ -104,6 +104,11 @@ class ApiController extends Controller
     "tool"=> array(
       'get'             => array("href" => "/ph/api/tool/get", "public" => true),
       'datetime'                => array("href" => "/ph/api/tool/datetime", "public" => true),
+    ),
+    "convert" => array(
+      "index"              => array("href" => "/ph/api/convert/index", "public" => true),
+      "geojson"            => array("href" => "/ph/api/convert/geojson", "public" => true),
+      "get"            => array("href" => "/ph/api/convert/get", "public" => true),
       ),
   );
 
