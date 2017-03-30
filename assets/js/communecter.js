@@ -498,6 +498,12 @@ var loadableUrls = {
 	"#define." : {title:'TAG MAP ', icon : 'map-marker', action:function( hash ){ showDefinition("explain"+hash.split('.')[1])	} },
 	"#data.index" : {title:'OPEN DATA FOR ALL', icon : 'fa-folder-open-o'},
 	"#opendata" : {"alias":"#data.index"},
+	"#convert.get" : {title:'CONVERT DATA', icon : 'download'},
+	"#convert.index" : {title:'CONVERT DATA INDEX', icon : 'download'},
+	"#convert.geojson" : {title:'CONVERT GEOJSON DATA', icon : 'download'},
+
+
+
 	"#search" : { "title":'SEARCH AND FIND', "icon" : 'map-search', "hash" : "#default.directory", "preaction":function( hash ){ searchByHash(hash);} },
 };
 
