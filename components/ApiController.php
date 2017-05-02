@@ -108,6 +108,12 @@ class ApiController extends Controller
     "convert" => array(
       "index"              => array("href" => "/ph/api/convert/index", "public" => true),
       "geojson"            => array("href" => "/ph/api/convert/geojson", "public" => true),
+      "wikipedia"            => array("href" => "/ph/api/convert/wikipedia", "public" => true),
+      "datagouv"            => array("href" => "/ph/api/convert/datagouv", "public" => true),
+      "osm"            => array("href" => "/ph/api/convert/osm", "public" => true),
+      "ods"            => array("href" => "/ph/api/convert/ods", "public" => true),
+      "datanova"       => array("href" => "/ph/api/convert/ods", "public" => true),
+
       "get"            => array("href" => "/ph/api/convert/get", "public" => true),
       ),
   );

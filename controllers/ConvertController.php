@@ -12,6 +12,11 @@ class ConvertController extends ApiController {
 	       	'index' 	=> 'citizenToolKit.controllers.convert.IndexAction',
 	       	'get' 		=> 'citizenToolKit.controllers.convert.GetAction',
 	       	'geojson'   => 'citizenToolKit.controllers.convert.GeoJsonAction',
+	       	'wikipedia'   => 'citizenToolKit.controllers.convert.WikipediaAction',
+	       	'datagouv'   => 'citizenToolKit.controllers.convert.DatagouvAction',
+	       	'osm'   => 'citizenToolKit.controllers.convert.OsmAction',
+	       	'ods'   => 'citizenToolKit.controllers.convert.OdsAction',
+	       	'datanova' => 'citizenToolKit.controllers.convert.DatanovaAction',
 	    );
 	}
 }
