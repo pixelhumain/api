@@ -112,7 +112,8 @@ class ApiController extends Controller
       "datagouv"            => array("href" => "/ph/api/convert/datagouv", "public" => true),
       "osm"            => array("href" => "/ph/api/convert/osm", "public" => true),
       "ods"            => array("href" => "/ph/api/convert/ods", "public" => true),
-      "datanova"       => array("href" => "/ph/api/convert/ods", "public" => true),
+      "datanova"       => array("href" => "/ph/api/convert/datanova", "public" => true),
+      "poleemploi"     => array("href" => "/ph/api/convert/poleemploi", "public" => true),
 
       "get"            => array("href" => "/ph/api/convert/get", "public" => true),
       ),

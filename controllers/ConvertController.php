@@ -17,6 +17,7 @@ class ConvertController extends ApiController {
 	       	'osm'   => 'citizenToolKit.controllers.convert.OsmAction',
 	       	'ods'   => 'citizenToolKit.controllers.convert.OdsAction',
 	       	'datanova' => 'citizenToolKit.controllers.convert.DatanovaAction',
+	       	'poleemploi' => 'citizenToolKit.controllers.convert.PoleEmploiAction',
 	    );
 	}
 }
