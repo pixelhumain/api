@@ -114,6 +114,11 @@ class ApiController extends Controller
       "ods"            => array("href" => "/ph/api/convert/ods", "public" => true),
       "datanova"       => array("href" => "/ph/api/convert/datanova", "public" => true),
       "poleemploi"     => array("href" => "/ph/api/convert/poleemploi", "public" => true),
+      "educ"           => array("href" => "/ph/api/convert/educ", "public" => true),
+      "educmembre"           => array("href" => "/ph/api/convert/educmembre", "public" => true),
+      "educecole"           => array("href" => "/ph/api/convert/educecole", "public" => true),
+      "educstruct"           => array("href" => "/ph/api/convert/educstruct", "public" => true),
+      "educetab"           => array("href" => "/ph/api/convert/educetab", "public" => true),
 
       "get"            => array("href" => "/ph/api/convert/get", "public" => true),
       ),

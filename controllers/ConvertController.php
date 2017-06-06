@@ -18,6 +18,11 @@ class ConvertController extends ApiController {
 	       	'ods'   => 'citizenToolKit.controllers.convert.OdsAction',
 	       	'datanova' => 'citizenToolKit.controllers.convert.DatanovaAction',
 	       	'poleemploi' => 'citizenToolKit.controllers.convert.PoleEmploiAction',
+	       	'educmembre' => 'citizenToolKit.controllers.convert.EducMembreAction',
+	       	'educecole' => 'citizenToolKit.controllers.convert.EducEcoleAction',
+	       	'educstruct' => 'citizenToolKit.controllers.convert.EducStructAction',
+	       	'educetab' => 'citizenToolKit.controllers.convert.EducEtabAction',
+
 	    );
 	}
 }
