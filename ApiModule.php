@@ -56,11 +56,11 @@ class ApiModule extends CWebModule
 	}
 
 	public function getTheme() {
-		$theme = "ph-dori";
+		$theme = "CO2";
 		if (!empty(Yii::app()->params['theme'])) {
 			$theme = Yii::app()->params['theme'];
 		} else if (empty(Yii::app()->theme)) {
-			$theme = "ph-dori";
+			$theme = "CO2";
 		}
 
 		if(@$_GET["tpl"] == "iframesig"){ $theme = $_GET["tpl"]; }
