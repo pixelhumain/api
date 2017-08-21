@@ -119,6 +119,7 @@ class ApiController extends Controller
       "educecole"           => array("href" => "/ph/api/convert/educecole", "public" => true),
       "educstruct"           => array("href" => "/ph/api/convert/educstruct", "public" => true),
       "educetab"           => array("href" => "/ph/api/convert/educetab", "public" => true),
+      "valueflows"           => array("href" => "/ph/api/convert/valueflows", "public" => true),
 
       "get"            => array("href" => "/ph/api/convert/get", "public" => true),
       ),
