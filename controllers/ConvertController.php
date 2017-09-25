@@ -23,6 +23,7 @@ class ConvertController extends ApiController {
 	       	'educstruct' => 'citizenToolKit.controllers.convert.EducStructAction',
 	       	'educetab' => 'citizenToolKit.controllers.convert.EducEtabAction',
 	       	'valueflows' => 'citizenToolKit.controllers.convert.ValueFlowsAction',
+	       	'organcity' => 'citizenToolKit.controllers.convert.OrgancityAction',
 
 	    );
 	}
