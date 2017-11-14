@@ -1,5 +1,5 @@
 <?php 
-	$cssAnsScriptFilesModule = array(
+	$cssAnsScriptFilesModule = array(    
     //l'ordre est a respecter
     '/plugins/swagger-ui/css/reset.css',
     '/plugins/swagger-ui/css/screen.css',
@@ -18,16 +18,17 @@
     '/plugins/swagger-ui/lib/swagger-oauth.js'
 	);
 	HtmlHelper::registerCssAndScriptsFiles($cssAnsScriptFilesModule,Yii::app()->request->baseUrl);
-
 ?>
 <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
 <?php
-    $server = ((isset($_SERVER['HTTPS']) AND (!empty($_SERVER['HTTPS'])) AND strtolower($_SERVER['HTTPS'])!='off') ? 'https://' : 'http://').$_SERVER['HTTP_HOST'];
+    $server = ( (isset($_SERVER['HTTPS']) AND (!empty($_SERVER['HTTPS'])) AND strtolower($_SERVER['HTTPS'])!='off') ? 'https://' : 'http://').$_SERVER['HTTP_HOST'];
     $url = $server.Yii::app()->createUrl("/api/data/get/");
 ?>
+
+
 <script type="text/javascript">
-var url = "<?php echo $url ; ?>"
+var url = "<?php echo $url ; ?>";
 jQuery(document).ready(function() {
   hljs.configure({
     highlightSizeThreshold: 5000
