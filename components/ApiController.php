@@ -124,6 +124,9 @@ class ApiController extends Controller
 
       "get"            => array("href" => "/ph/api/convert/get", "public" => true),
       ),
+    "poi"=> array(
+        "get"                   => array("href" => "/ph/api/poi/get", "public" => true),
+    ),
   );
 
   function initPage(){
