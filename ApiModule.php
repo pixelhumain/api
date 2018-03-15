@@ -28,6 +28,9 @@ class ApiModule extends CWebModule
 		// import the module-level models and components
 		$this->setImport(array(
 			'citizenToolKit.models.*',
+			'ressources.models.*',
+			'classifieds.models.*',
+			'places.models.*',
 			$this->id.'.models.*',
 			$this->id.'.components.*',
 			$this->id.'.messages.*',
