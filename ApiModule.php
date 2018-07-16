@@ -29,7 +29,7 @@ class ApiModule extends CWebModule
 		$this->setImport(array(
 			'citizenToolKit.models.*',
 			'ressources.models.*',
-			'classifieds.models.*',
+			'eco.models.*',
 			'places.models.*',
 			$this->id.'.models.*',
 			$this->id.'.components.*',
